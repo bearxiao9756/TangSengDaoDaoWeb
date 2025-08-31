@@ -125,3 +125,38 @@ yarn build-ele:win
 ```shell
 yarn build-ele:linux
 ```
+
+
+# 额外补充
+
+## 使用 nvm 进行多版本管理 
+
+安装步骤自行deepseek
+
+## 使用 Node 内置的corepack 对y yarn 多版本管理
+
+启用 corepack
+```
+corepack enable
+```
+
+查看当前支持 
+```
+corepack list
+```
+
+激活指定版本,比如 1.22.19(不污染全局 npm，自动切换。)
+
+```
+corepack prepare yarn@1.22.19 --activate
+```
+查看当前版本
+```
+yarn -V
+```
+
+切换到版本 1.22.18 （corepack 会自动安装不需要手动安装 ）
+
+```
+corepack prepare yarn@1.22.18 --activate
+```
