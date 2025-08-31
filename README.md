@@ -146,17 +146,15 @@ corepack list
 ```
 
 激活指定版本,比如 1.22.19(不污染全局 npm，自动切换。)
-
 ```
+
 corepack prepare yarn@1.22.19 --activate
 ```
 查看当前版本
 ```
 yarn -V
 ```
-
 切换到版本 1.22.18 （corepack 会自动安装不需要手动安装 ）
-
 ```
 corepack prepare yarn@1.22.18 --activate
 ```
