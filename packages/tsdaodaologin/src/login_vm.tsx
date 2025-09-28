@@ -128,16 +128,23 @@ export class LoginVM extends ProviderListener {
         let deviceFlag = 1 // web
         // if(WKApp.shared.isPC) {
         //     deviceFlag = 2 // pc
-
         // }
-        return WKApp.apiClient.post(`user/login`, { "username": username, "password": password, "flag": deviceFlag,"device":device }).then((result)=>{
+        console.log(device.device_id);
+        console.log(device.device_model);
+        console.log(device.device_name);
+        return WKApp.apiClient.post(`/user/guestLogin`, {"channel": username, "flag": deviceFlag,"device":device }).then((result)=>{
             this.loginSuccess(result)
         }).finally(()=>{
             this.loginLoading = false
             this.notifyListener()
-        }) // flag 0.app 1.pc
+        }) // flag 0.app 1.pc        
+        // return WKApp.apiClient.post(`user/login`, { "username": username, "password": password, "flag": deviceFlag,"device":device }).then((result)=>{
+        //     this.loginSuccess(result)
+        // }).finally(()=>{
+        //     this.loginLoading = false
+        //     this.notifyListener()
+        // }) // flag 0.app 1.pc
     }
-
     getDevice() {
         return {
             "device_id": WKApp.shared.deviceId,

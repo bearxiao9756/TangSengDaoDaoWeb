@@ -166,6 +166,7 @@ export class LoginInfo {
    * load 加载登录信息
    */
   public load() {
+    console.log("加载登陆信息");  
     this.uid = this.getStorageItemForSID("uid") || "";
     this.shortNo = this.getStorageItemForSID("short_no") || "";
     this.token = this.getStorageItemForSID("token") || "";
@@ -189,7 +190,9 @@ export class LoginInfo {
   // 是否登录
   isLogined() {
     if (!this.token || this.token === "") {
+       console.log("未登陆");  
       return false;
+
     }
     return true;
   }
