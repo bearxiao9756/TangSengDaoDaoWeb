@@ -50,7 +50,7 @@ export class WKLayout extends Component<WKLayoutProps>{
     render() {
         const { onRenderTab, contentLeft,contentRight,onLeftContext,onRightContext } = this.props
         return <div className="wk-layout">
-            <div className="wk-layout-tab">
+            <div className={classNames("wk-layout-tab",this.rightContext?.viewCount()>0?"wk-layout-tab-hidden":undefined)}>
                 {
                     onRenderTab && onRenderTab(window.innerWidth <= smallScreenWidth ? ScreenSize.small : ScreenSize.normal)
                 }

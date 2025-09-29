@@ -10,6 +10,7 @@ import "./index.css"
 import InputStyle from "./defaultStyle";
 import {IconSend} from '@douyinfe/semi-icons';
 import { Notification, Button } from '@douyinfe/semi-ui';
+import classNames from "classnames";
 
 export type OnInsertFnc = (text: string) => void
 export type OnAddMentionFnc = (uid: string, name: string) => void
@@ -344,6 +345,16 @@ export default class MessageInput extends Component<MessageInputProps, MessageIn
                             }}
                         />
                     </MentionsInput>
+                    <div className="wk-messageinput-send-button">
+                        <button className={classNames("semi-button", !hasValue ? "semi-button-disabled semi-button-primary-disabled semi-button-with-icon semi-button-with-icon-only":"semi-button-primary semi-button-with-icon semi-button-with-icon-only")} type="button" aria-disabled={hasValue?true:false}  disabled={hasValue?false:true} onClick={() => { this.send()}}>
+                            <span className="semi-button-content">
+                                <span role="img" aria-label="send" className="semi-icon semi-icon-default semi-icon-send">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false" aria-hidden="true"><path d="M20.6027 2.13245L1.53504 8.48833C0.829806 8.72341 0.618511 9.61847 1.14416 10.1441L4.95675 13.9567C5.2771 14.2771 5.77281 14.3421 6.16489 14.1151L14.351 9.37577C14.5283 9.27312 14.7269 9.47176 14.6243 9.64907L9.88494 17.8351C9.65794 18.2272 9.7229 18.7229 10.0433 19.0433L13.8559 22.8559C14.3816 23.3815 15.2766 23.1702 15.5117 22.465L21.8676 3.39736C22.1282 2.6156 21.3844 1.87187 20.6027 2.13245Z" fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
                 </div>
 
             </div>

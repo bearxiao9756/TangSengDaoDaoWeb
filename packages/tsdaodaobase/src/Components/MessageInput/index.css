@@ -1,4 +1,3 @@
-
 .wk-messageinput-box {
     background: #fff;
     width: 100%;
@@ -22,8 +21,92 @@ body[theme-mode=dark] .wk-messageinput-box {
     width: 100%;
     padding: 0px 15px 15px 15px;
     box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
 }
-
+.wk-messageinput-send-button .semi-button:not(:disabled):hover {
+    opacity: 0.8;
+}
+.wk-messageinput-send-button .semi-button:disabled {
+    opacity: 0.5;
+}
+.semi-button {
+    height: 32px; 
+    width: 32px; 
+    padding: 0px;
+    box-shadow: none;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: 0 transparent solid;
+    border-radius: var(--semi-border-radius-small);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-weight: 600;
+    outline: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.semi-button-primary-disabled {
+    background-color: var(--semi-color-disabled-bg);
+}
+.semi-button-disabled {
+    color: var(--semi-color-disabled-text);
+    cursor: not-allowed;
+}
+.semi-button-primary {
+    background-color: var(--semi-color-primary);
+    color: rgba(var(--semi-white), 1);
+    transition: background-color var(--semi-transition_duration-none) var(--semi-transition_function-easeIn) var(--semi-transition_delay-none), border var(--semi-transition_duration-none) var(--semi-transition_function-easeIn) var(--semi-transition_delay-none);
+    transform: scale(var(--semi-transform_scale-none));
+}
+.semi-button.semi-button-with-icon-only {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    justify-content: center;
+    align-items: center;
+}
+.semi-button.semi-button-with-icon {
+    display: inline-flex;
+    align-items: center;
+}
+.semi-button.semi-button-with-icon-only {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    justify-content: center;
+    align-items: center;
+}
+.semi-button.semi-button-with-icon-only.semi-button-size-small {
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.semi-button.semi-button-with-icon-only.semi-button-size-large {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.semi-button-content {
+    display: flex;
+    align-items: center;
+}
 .wk-messageinput-input {
     height: 100%;
     width: 100%;
@@ -46,9 +129,9 @@ body[theme-mode=dark] .wk-messageinput-input {
 }
 
 .wk-messageinput-input:empty:before {
-        content: attr(data-placeholder);
-        position: absolute;
-        color: #a9a9a9;
+    content: attr(data-placeholder);
+    position: absolute;
+    color: #a9a9a9;
 }
 
 .wk-messageinput-bar {
@@ -92,7 +175,7 @@ body[theme-mode=dark] .wk-messageinput-input {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: linear-gradient(180deg,#92a2b1 4.39%,#7b8e9f 94.46%);
+    background-color: linear-gradient(180deg, #92a2b1 4.39%, #7b8e9f 94.46%);
     border-radius: 2px;
     cursor: pointer;
 }
@@ -137,24 +220,23 @@ body[theme-mode=dark] .wk-messageinput-input {
     border-radius: 4px;
 }
 
-    .quickReplyPanel ul {
-        margin: 0;
-        padding: 0;
-    }
-
-        .quickReplyPanel ul li {
-            list-style-type: none;
-            height: 60px;
-            border-bottom: 1px solid rgba(9,30,66,.12);
-            cursor: pointer;
-        }
-
-.quickReplyItem {
+.quickReplyPanel ul {
+    margin: 0;
+    padding: 0;
 }
 
-    .quickReplyItem :hover {
-        background-color: #f4f5f7;
-    }
+.quickReplyPanel ul li {
+    list-style-type: none;
+    height: 60px;
+    border-bottom: 1px solid rgba(9, 30, 66, .12);
+    cursor: pointer;
+}
+
+.quickReplyItem {}
+
+.quickReplyItem :hover {
+    background-color: #f4f5f7;
+}
 
 
 .quickReplySelect {
@@ -162,8 +244,6 @@ body[theme-mode=dark] .wk-messageinput-input {
     color: #fff !important;
 }
 
-.wk-messageinput-header {
-}
 
 .wk-messageinput-reply {
     margin: 10px 10px 0px 10px;
@@ -188,7 +268,7 @@ body[theme-mode=dark] .wk-messageinput-input {
     background-color: white;
 }
 
-body[theme-mode=dark]  .wk-messageinput-input__control {
+body[theme-mode=dark] .wk-messageinput-input__control {
     background-color: var(--wk-color-secondary-2);
 }
 
