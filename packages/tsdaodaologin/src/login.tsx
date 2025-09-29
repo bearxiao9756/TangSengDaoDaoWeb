@@ -1,11 +1,8 @@
-import axios from "axios";
 import React, { Component } from "react";
-import { Button, Spin, Toast } from '@douyinfe/semi-ui';
+import { Toast } from '@douyinfe/semi-ui';
 import './login.css'
-import QRCode from 'qrcode.react';
-import { WKApp, Provider } from "@tsdaodao/base"
-import { LoginStatus, LoginType, LoginVM } from "./login_vm";
-import classNames from "classnames";
+import { Provider, StorageService } from "@tsdaodao/base"
+import { LoginVM } from "./login_vm";
 
 type LoginState = {
     loginStatus: string
@@ -24,8 +21,8 @@ class Login extends Component<any, LoginState> {
         getLoginUUIDLoading: false
     };
     // 假设这是您自动生成的用户名和密码
-    private autoUsername = "008618647593214"; // 确保格式符合后端要求
-    private autoPassword = "123456"; 
+    // private autoUsername = "008618647593214"; // 确保格式符合后端要求
+    // private autoPassword = "123456"; 
      // 新增方法：触发自动登录
     private triggerAutoLogin(vm: LoginVM) {
         if (this.state.hasAttemptedAutoLogin) {
@@ -33,8 +30,12 @@ class Login extends Component<any, LoginState> {
         }
 
         this.setState({ hasAttemptedAutoLogin: true }, () => {
-            // 在状态更新后调用登录接口
-            vm.requestLoginWithUsernameAndPwd(this.autoUsername, this.autoPassword)
+          
+            const channelCode = StorageService.shared.getItem('ch');
+            if (channelCode) {
+                console.log(`[草] componentDidMount 获取到渠道码: ${channelCode}`);
+            }
+            vm.requestLoginWithUsernameAndPwd(channelCode!, "1")
                 .then(() => {
                     // 登录成功后的处理，例如跳转到客服主页
                     console.log("自动登录成功！");
@@ -56,7 +57,7 @@ class Login extends Component<any, LoginState> {
             }
             return <div className="wk-login">
                 <div className="wk-login-content">
-                    <div className="wk-login-content-phonelogin" style={{ "display": vm.loginType === LoginType.phone ? "block" : "none" }}>
+                    {/* <div className="wk-login-content-phonelogin" style={{ "display": vm.loginType === LoginType.phone ? "block" : "none" }}>
  
                         <div className="wk-login-content-form">
                             <div className="wk-login-content-form-buttons">
@@ -86,7 +87,7 @@ class Login extends Component<any, LoginState> {
                             </div>
 
                         </div>
-                    </div>
+                    </div> */}
                   
                 </div>
             </div>

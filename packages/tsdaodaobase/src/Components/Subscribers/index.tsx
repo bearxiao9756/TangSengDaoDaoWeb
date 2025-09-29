@@ -27,11 +27,11 @@ export class Subscribers extends Component<SubscribersProps> {
         className="wk-subscribers-item"
         onClick={() => {
           const vercode = subscriber.orgData?.vercode;
-          WKApp.shared.baseContext.showUserInfo(
-            subscriber.uid,
-            subscriber.channel,
-            vercode
-          );
+          // WKApp.shared.baseContext.showUserInfo(
+          //   subscriber.uid,
+          //   subscriber.channel,
+          //   vercode
+          // );
         }}
       >
         <img src={WKApp.shared.avatarUser(subscriber.uid)} alt=""></img>
@@ -77,7 +77,7 @@ export class Subscribers extends Component<SubscribersProps> {
                       ></img>
                     </div>
                   ) : undefined} */}
-                  {vm.showAdd()
+                  {/* {vm.showAdd()
                     ? WKApp.endpoints.organizationalTool(
                       channel,
                       <div className="wk-subscribers-item">
@@ -87,8 +87,8 @@ export class Subscribers extends Component<SubscribersProps> {
                         />
                       </div>
                     )
-                    : undefined}
-                  {vm.showRemove() ? (
+                    : undefined} */}
+                  {/* {vm.showRemove() ? (
                     <div
                       className="wk-subscribers-item"
                       onClick={() => {
@@ -102,7 +102,7 @@ export class Subscribers extends Component<SubscribersProps> {
                         alt=""
                       />
                     </div>
-                  ) : undefined}
+                  ) : undefined} */}
                 </div>
                 {vm.hasMoreSubscribers() ? (
                   <div

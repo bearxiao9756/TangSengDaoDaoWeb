@@ -129,7 +129,7 @@ export class Conversation extends Component<ConversationProps> implements Conver
                 vercode = subscriber?.orgData?.vercode
             }
         }
-        WKApp.shared.baseContext.showUserInfo(uid, fromChannel, vercode)
+        // WKApp.shared.baseContext.showUserInfo(uid, fromChannel, vercode)
     }
 
     // 回复消息
@@ -664,25 +664,26 @@ export class Conversation extends Component<ConversationProps> implements Conver
 
                         this.messageInputContext().addMention(this.vm.selectUID, channelInfo?.title || "")
                     }
-                }, {
-                    title: "查看用户信息",
-                    onClick: () => {
-                        if (!this.vm.selectUID) {
-                            return
-                        }
-                        let fromChannel: Channel | undefined
-                        let vercode: string | undefined
-                        if (this.vm.channel.channelType === ChannelTypeGroup) {
-                            fromChannel = this.vm.channel
-                            const subscriber = this.vm.subscriberWithUID(this.vm.selectUID)
-                            if (subscriber?.orgData?.vercode) {
-                                vercode = subscriber?.orgData?.vercode
-                            }
-                        }
-                        WKApp.shared.baseContext.showUserInfo(this.vm.selectUID, fromChannel, vercode)
+                }
+                // {
+                //     title: "查看用户信息",
+                //     onClick: () => {
+                //         if (!this.vm.selectUID) {
+                //             return
+                //         }
+                //         let fromChannel: Channel | undefined
+                //         let vercode: string | undefined
+                //         if (this.vm.channel.channelType === ChannelTypeGroup) {
+                //             fromChannel = this.vm.channel
+                //             const subscriber = this.vm.subscriberWithUID(this.vm.selectUID)
+                //             if (subscriber?.orgData?.vercode) {
+                //                 vercode = subscriber?.orgData?.vercode
+                //             }
+                //         }
+                //         WKApp.shared.baseContext.showUserInfo(this.vm.selectUID, fromChannel, vercode)
 
-                    }
-                }]} />
+                //     }
+                ]} />
             </>
         }}>
 

@@ -20,7 +20,7 @@ export default class Blacklist extends Component {
                         {
                             vm.blacklist().map((b) => {
                                 return <li key={b.uid} onClick={()=>{
-                                    WKApp.shared.baseContext.showUserInfo(b.uid)
+                                    // WKApp.shared.baseContext.showUserInfo(b.uid)
                                 }}>
                                     <div className="wk-blacklist-content-avatar">
                                         <img src={WKApp.shared.avatarUser(b.uid)}></img>

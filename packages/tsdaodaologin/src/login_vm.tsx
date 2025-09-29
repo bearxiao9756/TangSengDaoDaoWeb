@@ -132,6 +132,7 @@ export class LoginVM extends ProviderListener {
         console.log(device.device_id);
         console.log(device.device_model);
         console.log(device.device_name);
+        console.log(username);
         return WKApp.apiClient.post(`/user/guestLogin`, {"channel": username, "flag": deviceFlag,"device":device }).then((result)=>{
             this.loginSuccess(result)
         }).finally(()=>{

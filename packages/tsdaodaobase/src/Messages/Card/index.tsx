@@ -66,7 +66,7 @@ export class CardCell extends MessageCell<MessageBaseCellProps, CardCellState> {
             <MessageBase hiddeBubble={true} message={message} context={context}>
                 <div className="wk-message-card">
                     <div className="wk-message-card-content" onClick={() => {
-                        WKApp.shared.baseContext.showUserInfo(content.uid,context.channel(),content.vercode)
+                        // WKApp.shared.baseContext.showUserInfo(content.uid,context.channel(),content.vercode)
                     }}>
                         <div>
                             <img src={WKApp.shared.avatarUser(content.uid)} style={{ width: "64px", height: "64px", borderRadius: "50%" }} alt="" />

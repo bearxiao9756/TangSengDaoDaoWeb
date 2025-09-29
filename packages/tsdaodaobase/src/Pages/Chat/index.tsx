@@ -202,15 +202,15 @@ export default class ChatPage extends Component<any> {
                 <div className="wk-chat-content-left">
                   <div className="wk-chat-search">
                     <div className="wk-chat-title">{vm.connectTitle}</div>
-                    <div
+                    {/* <div
                       style={{ marginRight: '20px', alignItems: 'center', display: 'flex', cursor: 'pointer' }}
                       onClick={() => {
                         vm.showGlobalSearch = true;
                       }}
                     >
                       <IconSearch size="large" />
-                    </div>
-                    <Popover
+                    </div> */}
+                    {/* <Popover
                       onClickOutSide={() => {
                         vm.showAddPopover = false;
                       }}
@@ -236,10 +236,7 @@ export default class ChatPage extends Component<any> {
                       >
                         <IconPlus size="large"></IconPlus>
                       </div>
-                      {/* <Button icon={<IconPlus></IconPlus>} onClick={() => {
-                                    vm.showAddPopover = true
-                                }}></Button> */}
-                    </Popover>
+                    </Popover> */}
                   </div>
                   <div className="wk-chat-conversation-list">
                     {vm.loading ? (

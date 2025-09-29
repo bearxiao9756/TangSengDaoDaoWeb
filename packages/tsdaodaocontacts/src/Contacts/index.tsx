@@ -185,62 +185,66 @@ export default class ContactsList extends Component<any, ContactsState> {
 
     }
     render() {
-        const { indexList } = this.state
-        return <WKBase onContext={(baseCtx) => {
-            this.baseContext = baseCtx
-        }}>
-            <div className="wk-contacts">
-                <WKNavMainHeader title="联系人"></WKNavMainHeader>
-                <div className="wk-contacts-content">
-                    <div className="wk-contacts-content-header">
-                        <Search placeholder="搜索" onChange={(v) => {
-                            this.setState({
-                                keyword: v
-                            }, () => {
-                                this.rebuildIndex()
-                            })
-                        }}></Search>
-                    </div>
-                    <div className="wk-contacts-content-fnc">
-                        {
-                            WKApp.endpoints.contactsHeaders().map((view, i) => {
-                                return <div key={i}>{view}</div>
-                            })
-                        }
-                    </div>
-                    <div className="wk-contacts-content-contacts">
-                        {
-                            indexList.map((indexName) => {
-                                return this.sectionUI(indexName)
-                            })
-                        }
-                    </div>
-                </div>
-                <ContextMenus onContext={(context: ContextMenusContext) => {
-                    this.contextMenusContext = context
-                }} menus={[{
-                    title: "查看资料", onClick: () => {
-                        const { selectedItem } = this.state
-                        this.baseContext.showUserInfo(selectedItem?.uid || "")
-                    }
-                }, {
-                    title: "分享给朋友...", onClick: () => {
-                        WKApp.shared.baseContext.showConversationSelect((channels: Channel[]) => {
-                            const { selectedItem } = this.state
-                            if (channels && channels.length > 0) {
-                                for (const channel of channels) {
-                                    const card = new Card()
-                                    card.uid = selectedItem?.uid || ""
-                                    card.name = selectedItem?.name || ""
-                                    card.vercode = selectedItem?.vercode||""
-                                    WKSDK.shared().chatManager.send(card, channel)
-                                }
-                                Toast.success("分享成功！")
-                            }
-                        }, "分享名片")
-                    }
-                }]} />
-            </div>
-        </WKBase>
+
+         return <div>
+            <span>下载中....</span>
+         </div>
+        // const { indexList } = this.state
+        // return<WKBase onContext={(baseCtx) => {
+        //     this.baseContext = baseCtx
+        // }}>
+        //     <div className="wk-contacts">
+        //         <WKNavMainHeader title="联系人"></WKNavMainHeader>
+        //         <div className="wk-contacts-content">
+        //             <div className="wk-contacts-content-header">
+        //                 <Search placeholder="搜索" onChange={(v) => {
+        //                     this.setState({
+        //                         keyword: v
+        //                     }, () => {
+        //                         this.rebuildIndex()
+        //                     })
+        //                 }}></Search>
+        //             </div>
+        //             <div className="wk-contacts-content-fnc">
+        //                 {
+        //                     WKApp.endpoints.contactsHeaders().map((view, i) => {
+        //                         return <div key={i}>{view}</div>
+        //                     })
+        //                 }
+        //             </div>
+        //             <div className="wk-contacts-content-contacts">
+        //                 {
+        //                     indexList.map((indexName) => {
+        //                         return this.sectionUI(indexName)
+        //                     })
+        //                 }
+        //             </div>
+        //         </div>
+        //         <ContextMenus onContext={(context: ContextMenusContext) => {
+        //             this.contextMenusContext = context
+        //         }} menus={[{
+        //             title: "查看资料", onClick: () => {
+        //                 const { selectedItem } = this.state
+        //                 this.baseContext.showUserInfo(selectedItem?.uid || "")
+        //             }
+        //         }, {
+        //             title: "分享给朋友...", onClick: () => {
+        //                 WKApp.shared.baseContext.showConversationSelect((channels: Channel[]) => {
+        //                     const { selectedItem } = this.state
+        //                     if (channels && channels.length > 0) {
+        //                         for (const channel of channels) {
+        //                             const card = new Card()
+        //                             card.uid = selectedItem?.uid || ""
+        //                             card.name = selectedItem?.name || ""
+        //                             card.vercode = selectedItem?.vercode||""
+        //                             WKSDK.shared().chatManager.send(card, channel)
+        //                         }
+        //                         Toast.success("分享成功！")
+        //                     }
+        //                 }, "分享名片")
+        //             }
+        //         }]} />
+        //     </div>
+        // </WKBase>
     }
 }

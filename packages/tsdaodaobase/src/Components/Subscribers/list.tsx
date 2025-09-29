@@ -74,7 +74,7 @@ export class SubscriberList extends Component<
   onItemClick = (subscriber: Subscriber) => {
     const { canSelect } = this.props;
     if (!canSelect) {
-      WKApp.shared.baseContext.showUserInfo(subscriber.uid, this.props.channel);
+      // WKApp.shared.baseContext.showUserInfo(subscriber.uid, this.props.channel);
       return;
     }
     this.checkItem(subscriber);

@@ -21,7 +21,6 @@ export class MainContentLeft extends Component<MainContentLeftProps, MainContent
 
     render() {
         const { vm } = this.props
-
         return <>
             {
                 vm.historyRoutePaths.map((routePath, i) => {
@@ -73,7 +72,7 @@ export class MainPage extends Component {
                     context.popToRoot()
                 }
             }} contentRight={<div className="wk-chat-empty">
-                <img src={require("./assets/start_chat.svg").default} alt=""></img>
+                {/* <img src={require("./assets/start_chat.svg").default} alt=""></img> */}
             </div>} />
         }}>
 

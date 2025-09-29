@@ -250,7 +250,7 @@ export default class ConversationList extends Component<ConversationListProps, C
                 })
             }
 
-            <ContextMenus onContext={(ctx) => {
+            {/* <ContextMenus onContext={(ctx) => {
                 this.contextMenusContext = ctx
             }} menus={[
                 {
@@ -279,7 +279,7 @@ export default class ConversationList extends Component<ConversationListProps, C
                         this.onClearMessages(selectConversationWrap?.channel!)
                     }
                 },
-            ]} />
+            ]} /> */}
         </div>
     }
 }

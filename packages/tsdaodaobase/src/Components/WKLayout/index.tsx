@@ -74,6 +74,7 @@ export class WKLayout extends Component<WKLayoutProps>{
                     }}>
                         {contentRight}
                     </WKViewQueue>
+
                 </div>
             </div>
         </div>
