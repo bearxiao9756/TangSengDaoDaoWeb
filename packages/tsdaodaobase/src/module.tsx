@@ -630,47 +630,47 @@ export default class BaseModule implements IModule {
       },
       3000
     );
-    WKApp.endpoints.registerMessageContextMenus(
-      "contextmenus.revoke",
-      (message, context) => {
-        if (message.messageID == "") {
-          return null;
-        }
+    // WKApp.endpoints.registerMessageContextMenus(
+    //   "contextmenus.revoke",
+    //   (message, context) => {
+    //     if (message.messageID == "") {
+    //       return null;
+    //     }
 
-        let isManager = false;
-        if (message.channel.channelType == ChannelTypeGroup) {
-          const sub = WKSDK.shared().channelManager.getSubscribeOfMe(
-            message.channel
-          );
-          if (sub?.role == GroupRole.manager || sub?.role == GroupRole.owner) {
-            isManager = true;
-          }
-        }
+    //     let isManager = false;
+    //     if (message.channel.channelType == ChannelTypeGroup) {
+    //       const sub = WKSDK.shared().channelManager.getSubscribeOfMe(
+    //         message.channel
+    //       );
+    //       if (sub?.role == GroupRole.manager || sub?.role == GroupRole.owner) {
+    //         isManager = true;
+    //       }
+    //     }
 
-        if (!isManager) {
-          if (!message.send) {
-            return null;
-          }
-          let revokeSecond = WKApp.remoteConfig.revokeSecond;
-          if (revokeSecond > 0) {
-            const messageTime = new Date().getTime() / 1000 - message.timestamp;
-            if (messageTime > revokeSecond) {
-              //  超过两分钟则不显示撤回
-              return null;
-            }
-          }
-        }
-        return {
-          title: "撤回",
-          onClick: () => {
-            context.revokeMessage(message).catch((err) => {
-              Toast.error(err.msg);
-            });
-          },
-        };
-      },
-      4000
-    );
+    //     if (!isManager) {
+    //       if (!message.send) {
+    //         return null;
+    //       }
+    //       let revokeSecond = WKApp.remoteConfig.revokeSecond;
+    //       if (revokeSecond > 0) {
+    //         const messageTime = new Date().getTime() / 1000 - message.timestamp;
+    //         if (messageTime > revokeSecond) {
+    //           //  超过两分钟则不显示撤回
+    //           return null;
+    //         }
+    //       }
+    //     }
+    //     return {
+    //       title: "撤回",
+    //       onClick: () => {
+    //         context.revokeMessage(message).catch((err) => {
+    //           Toast.error(err.msg);
+    //         });
+    //       },
+    //     };
+    //   },
+    //   4000
+    // );
   }
 
   registerUserInfo() {
