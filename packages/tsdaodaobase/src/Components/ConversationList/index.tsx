@@ -107,9 +107,8 @@ export default class ConversationList extends Component<ConversationListProps, C
                     WKSDK.shared().channelManager.fetchChannelInfo(fromChannel)
                 }
             }
-
-
-            return `${from}${lastMessage.content?.conversationDigest || ""}`
+            let info =  `${from}${lastMessage.content?.conversationDigest || ""}`
+            return  info.includes("移除群聊") ? "" : info;
         }
     }
 
