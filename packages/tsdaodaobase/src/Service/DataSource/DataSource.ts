@@ -315,6 +315,21 @@ export interface IChannelDataSource {
     blacklistRemove(channel: Channel, uids: string[]): Promise<void>
 
     /**
+     * 禁言某成员
+     * @param channel 
+     * @param uid 
+     * @param action
+     */
+    banAsubscribers(channel: Channel, uid: string): Promise<void>
+    /**
+     * 解除禁言某成员
+     * @param channel 
+     * @param uid 
+     * @param action
+     */
+    nobanAsubscribers(channel: Channel, uid: string): Promise<void>
+
+    /**
      * 更新扩展
      * @param conversationExtra 
      */

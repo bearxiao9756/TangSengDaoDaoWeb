@@ -140,6 +140,24 @@ export class ChannelDataSource implements IChannelDataSource {
         return WKApp.apiClient.post(`groups/${channel.channelID}/blacklist/remove`, { uids: uids })
     }
 
+    banAsubscribers(channel: Channel, uid: string): Promise<void> {
+        return WKApp.apiClient.post(`groups/${channel.channelID}/forbidden_with_member`, {
+            data: {
+                member_uid: uid,
+                key: 6,
+                action:1
+            }
+        })
+    }
+    nobanAsubscribers(channel: Channel, uid: string): Promise<void> {
+        return WKApp.apiClient.post(`groups/${channel.channelID}/forbidden_with_member`, {
+            data: {
+                member_uid: uid,
+                key: 6,
+                action:0
+            }
+        })
+    }
     conversationExtraUpdate(conversationExtra:ConversationExtra): Promise<void> {
         return WKApp.apiClient.post(`conversations/${conversationExtra.channel.channelID}/${conversationExtra.channel.channelType}/extra`,{
             "browse_to": conversationExtra.browseTo,

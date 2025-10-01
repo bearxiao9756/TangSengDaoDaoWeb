@@ -646,7 +646,6 @@ export default class BaseModule implements IModule {
             isManager = true;
           }
         }
-
         if (!isManager) {
           if (!message.send) {
             return null;
@@ -663,9 +662,38 @@ export default class BaseModule implements IModule {
         return {
           title: "撤回",
           onClick: () => {
-            context.revokeMessage(message).catch((err) => {
+            context.revokeMessage(message)
+          },
+        };
+      },
+      4000
+    );
+    WKApp.endpoints.registerMessageContextMenus(
+      "contextmenus.delete",
+      (message, context) => {
+        if (message.messageID == "") {
+          return null;
+        }
+
+        let isManager = false;
+        if (message.channel.channelType == ChannelTypeGroup) {
+          const sub = WKSDK.shared().channelManager.getSubscribeOfMe(
+            message.channel
+          );
+          if (sub?.role == GroupRole.manager || sub?.role == GroupRole.owner) {
+            isManager = true;
+          }
+        }
+
+        if (!isManager) {
+          Toast.error("非管理员不可撤回");
+        }
+        return {
+          title: "删除",
+          onClick: () => {
+            context.deleteMessages([message]).catch((err)=>{
               Toast.error(err.msg);
-            });
+            })
           },
         };
       },
@@ -972,6 +1000,53 @@ export default class BaseModule implements IModule {
       })
     );
   }
+ 
+ inputSetManagePush(
+    context: RouteContext<any>,
+    defaultValue: string,
+    onFinish: (value: string) => Promise<void>,
+    placeholder?: string,
+    maxCount?: number,
+    allowEmpty?: boolean,
+    allowWrap?: boolean
+  ) {
+    let value: string;
+    let finishButtonContext: FinishButtonContext;
+    context.push(
+      <InputEdit
+        defaultValue={defaultValue}
+        placeholder={placeholder}
+        onChange={(v, exceeded) => {
+          value = v;
+          if (!allowEmpty && (!value || value === "")) {
+            finishButtonContext.disable(true);
+          } else {
+            finishButtonContext.disable(false);
+          }
+          if (exceeded) {
+            finishButtonContext.disable(true);
+          }
+        }}
+        maxCount={maxCount}
+        allowWrap={allowWrap}
+      ></InputEdit>,
+      new RouteContextConfig({
+        showFinishButton: true,
+        onFinishContext: (finishBtnContext) => {
+          finishButtonContext = finishBtnContext;
+          finishBtnContext.disable(true);
+        },
+        onFinish: async () => {
+          finishButtonContext.loading(true);
+          await onFinish(value);
+          finishButtonContext.loading(false);
+
+          context.pop();
+        },
+        
+      })
+    );
+  }
 
   registerChannelSettings() {
     WKApp.shared.channelSettingRegister("channel.subscribers", (context) => {
@@ -1226,6 +1301,60 @@ export default class BaseModule implements IModule {
                   "群聊的备注仅自己可见",
                   15,
                   true
+                );
+              },
+            },
+          })
+        );
+        rows.push(
+          new Row({
+            cell: ListItem,
+            properties: {
+              title: "添加群管理",
+              subTitle: channelInfo?.title,
+              onClick: () => {
+                if (!data.isCreatorOfMe) {
+                  Toast.warning("只有群主才可以");
+                  return;
+                }
+                this.inputSetManagePush(
+                  context,
+                  "",
+                  (value: string) => {
+                    return WKApp.dataSource.channelDataSource.managerAdd(channel,[value])
+                      .catch((err) => {
+                        Toast.error(err.msg);
+                      });
+                  },
+                  "添加群管理 (输入用户UID,例如 9f9c4815697744458c722c28f4b67189)",
+                  64
+                );
+              },
+            },
+          })
+        );
+        rows.push(
+          new Row({
+            cell: ListItem,
+            properties: {
+              title: "移除群管理",
+              subTitle: channelInfo?.title,
+              onClick: () => {
+                // if (!data.isCreatorOfMe) {
+                //   Toast.warning("只有群主才可以");
+                //   return;
+                // }
+                this.inputSetManagePush(
+                  context,
+                  "",
+                  (value: string) => {
+                    return WKApp.dataSource.channelDataSource.managerRemove(channel,[value])
+                      .catch((err) => {
+                        Toast.error(err.msg);
+                      });
+                  },
+                  "移除群管理  (输入用户UID,例如 9f9c4815697744458c722c28f4b67189)",
+                  64
                 );
               },
             },

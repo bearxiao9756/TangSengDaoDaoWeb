@@ -56,15 +56,14 @@ export class SubscribersVM extends ProviderListener {
     }
 
     showRemove() {
-        // const subscriberOfMe = this.routeData.subscriberOfMe
-        // let role = GroupRole.normal
-        // if(subscriberOfMe) {
-        //     role = subscriberOfMe.role
-        // }
-        // if(role === GroupRole.owner || role === GroupRole.manager) {
-        //    return true
-        // }
-        return true
+        const subscriberOfMe = this.routeData.subscriberOfMe
+        let role = GroupRole.normal
+        if(subscriberOfMe) {
+            role = subscriberOfMe.role
+        }
+        if(role === GroupRole.owner || role === GroupRole.manager) {
+           return true
+        }
     }
 
     hasMoreSubscribers() {

@@ -116,7 +116,7 @@ export class Subscribers extends Component<SubscribersProps> {
                       );
                     }}
                   >
-                    查看更多群成员
+                    查看成员设置管理
                   </div>
                 ) : undefined}
               </div>

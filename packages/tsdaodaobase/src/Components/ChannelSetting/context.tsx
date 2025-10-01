@@ -17,6 +17,10 @@ export class ChannelSettingRouteData {
      get isManagerOrCreatorOfMe() {
         return  this.subscriberOfMe?.role === GroupRole.manager || this.subscriberOfMe?.role === GroupRole.owner
      }
+        // 我是否是管理者或创建者
+     get isCreatorOfMe() {
+        return this.subscriberOfMe?.role === GroupRole.owner
+     }
 
 }
 

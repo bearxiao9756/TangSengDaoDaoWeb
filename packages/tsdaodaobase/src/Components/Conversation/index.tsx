@@ -682,7 +682,83 @@ export class Conversation extends Component<ConversationProps> implements Conver
                         WKApp.shared.baseContext.showUserInfo(this.vm.selectUID, fromChannel, vercode)
 
                     }
-                }]} />
+                }, {
+                    title: "踢群",
+                    onClick: () => {
+                        if (!this.vm.selectUID) {
+                            return
+                        }
+                        let fromChannel: Channel | undefined
+                        let vercode: string | undefined
+                        if (this.vm.channel.channelType === ChannelTypeGroup) {
+                            fromChannel = this.vm.channel
+                            const subscriber = this.vm.subscriberWithUID(this.vm.selectUID)
+                            if (subscriber?.orgData?.vercode) {
+                                vercode = subscriber?.orgData?.vercode
+                            }
+                        }else{
+                            Toast.error("非群组不支持该操作"); 
+                        }
+                        if (fromChannel != null) {
+                            WKApp.dataSource.channelDataSource.removeSubscribers(fromChannel, [this.vm.selectUID]).then(() => {
+                            }).catch((err) => {
+                                Toast.error(err.msg);
+                            });
+                        }else{
+                             Toast.error("群组已经解散了不支持该操"); 
+                        }
+                        // WKApp.shared.baseContext.showUserInfo(this.vm.selectUID, fromChannel, vercode)
+                    }
+                },
+                //   {
+                //     title: "禁言",
+                //     onClick: () => {
+                //         if (!this.vm.selectUID) {
+                //             return
+                //         }
+                //         let fromChannel: Channel | undefined
+                //         let vercode: string | undefined
+                //         if (this.vm.channel.channelType === ChannelTypeGroup) {
+                //             fromChannel = this.vm.channel
+                //         }else{
+                //             Toast.error("非群组不支持该操作"); 
+                //         }
+                //         if (fromChannel != null && this.vm.selectUID != null) {
+                //             WKApp.dataSource.channelDataSource.banAsubscribers(fromChannel, this.vm.selectUID).then(() => {
+                //             }).catch((err) => {
+                //                 Toast.error(err.msg);
+                //             });
+                //         }else{
+                //              Toast.error("群组已经解散了不支持该操"); 
+                //         }
+                //     }
+                // },
+                // {
+                //     title: "解除禁言",
+                //     onClick: () => {
+                //         console.log("ID")
+                //          console.log(this.vm.selectUID)
+                //           console.log("ID")
+                //         if (!this.vm.selectUID) {
+                //             return
+                //         }
+                //         let fromChannel: Channel | undefined
+                //         if (this.vm.channel.channelType === ChannelTypeGroup) {
+                //             fromChannel = this.vm.channel                          
+                //         }else{
+                //             Toast.error("非群组不支持该操作"); 
+                //         }
+                //         if (fromChannel != null) {
+                //             WKApp.dataSource.channelDataSource.nobanAsubscribers(fromChannel, this.vm.selectUID).then(() => {
+                //             }).catch((err) => {
+                //                 Toast.error(err.msg);
+                //             });
+                //         }else{
+                //              Toast.error("群组已经解散了不支持该操"); 
+                //         }
+                //     }
+                // }
+                ]} />
             </>
         }}>
 
