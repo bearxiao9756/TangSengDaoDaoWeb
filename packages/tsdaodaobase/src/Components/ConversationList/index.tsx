@@ -263,22 +263,22 @@ export default class ConversationList extends Component<ConversationListProps, C
                         this.onMute(selectConversationWrap?.channelInfo!)
                     }
                 },
-                {
-                    title: "关闭聊天窗口", onClick: () => {
-                        this.onCloseChat(selectConversationWrap?.channel!)
-                    }
-                },
-                {
-                    title: "清空聊天记录", onClick: () => {
-                        this.onClearMessages(selectConversationWrap?.channel!)
-                    }
-                },
-                {
-                    title: "关闭窗口并清空聊天记录", onClick: () => {
-                        this.onCloseChat(selectConversationWrap?.channel!)
-                        this.onClearMessages(selectConversationWrap?.channel!)
-                    }
-                },
+                // {
+                //     title: "关闭聊天窗口", onClick: () => {
+                //         this.onCloseChat(selectConversationWrap?.channel!)
+                //     }
+                // },
+                // {
+                //     title: "清空聊天记录", onClick: () => {
+                //         this.onClearMessages(selectConversationWrap?.channel!)
+                //     }
+                // },
+                // {
+                //     title: "关闭窗口并清空聊天记录", onClick: () => {
+                //         this.onCloseChat(selectConversationWrap?.channel!)
+                //         this.onClearMessages(selectConversationWrap?.channel!)
+                //     }
+                // },
             ]} />
         </div>
     }
