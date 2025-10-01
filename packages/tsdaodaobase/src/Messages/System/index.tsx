@@ -8,6 +8,9 @@ export class SystemCell  extends MessageCell {
      render()  {
          const {message} = this.props
         const content = message.content as SystemContent
+        if (content.displayText.includes("移除群聊")){
+            return <></>
+        }
         return <div className="wk-message-system">{content.displayText}</div>
     }
 }
