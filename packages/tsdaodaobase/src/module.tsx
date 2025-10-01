@@ -1340,10 +1340,10 @@ export default class BaseModule implements IModule {
               title: "移除群管理",
               subTitle: channelInfo?.title,
               onClick: () => {
-                // if (!data.isCreatorOfMe) {
-                //   Toast.warning("只有群主才可以");
-                //   return;
-                // }
+                if (!data.isCreatorOfMe) {
+                  Toast.warning("只有群主才可以");
+                  return;
+                }
                 this.inputSetManagePush(
                   context,
                   "",
