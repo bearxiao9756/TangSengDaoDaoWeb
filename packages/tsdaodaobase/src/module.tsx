@@ -618,87 +618,87 @@ export default class BaseModule implements IModule {
         };
       }
     );
-    WKApp.endpoints.registerMessageContextMenus(
-      "contextmenus.muli",
-      (message, context) => {
-        return {
-          title: "多选",
-          onClick: () => {
-            context.setEditOn(true);
-          },
-        };
-      },
-      3000
-    );
-    WKApp.endpoints.registerMessageContextMenus(
-      "contextmenus.revoke",
-      (message, context) => {
-        if (message.messageID == "") {
-          return null;
-        }
+    // WKApp.endpoints.registerMessageContextMenus(
+    //   "contextmenus.muli",
+    //   (message, context) => {
+    //     return {
+    //       title: "多选",
+    //       onClick: () => {
+    //         context.setEditOn(true);
+    //       },
+    //     };
+    //   },
+    //   3000
+    // );
+    // WKApp.endpoints.registerMessageContextMenus(
+    //   "contextmenus.revoke",
+    //   (message, context) => {
+    //     if (message.messageID == "") {
+    //       return null;
+    //     }
 
-        let isManager = false;
-        if (message.channel.channelType == ChannelTypeGroup) {
-          const sub = WKSDK.shared().channelManager.getSubscribeOfMe(
-            message.channel
-          );
-          if (sub?.role == GroupRole.manager || sub?.role == GroupRole.owner) {
-            isManager = true;
-          }
-        }
-        if (!isManager) {
-          if (!message.send) {
-            return null;
-          }
-          let revokeSecond = WKApp.remoteConfig.revokeSecond;
-          if (revokeSecond > 0) {
-            const messageTime = new Date().getTime() / 1000 - message.timestamp;
-            if (messageTime > revokeSecond) {
-              //  超过两分钟则不显示撤回
-              return null;
-            }
-          }
-        }
-        return {
-          title: "撤回",
-          onClick: () => {
-            context.revokeMessage(message)
-          },
-        };
-      },
-      4000
-    );
-    WKApp.endpoints.registerMessageContextMenus(
-      "contextmenus.delete",
-      (message, context) => {
-        if (message.messageID == "") {
-          return null;
-        }
+    //     let isManager = false;
+    //     if (message.channel.channelType == ChannelTypeGroup) {
+    //       const sub = WKSDK.shared().channelManager.getSubscribeOfMe(
+    //         message.channel
+    //       );
+    //       if (sub?.role == GroupRole.manager || sub?.role == GroupRole.owner) {
+    //         isManager = true;
+    //       }
+    //     }
+    //     if (!isManager) {
+    //       if (!message.send) {
+    //         return null;
+    //       }
+    //       let revokeSecond = WKApp.remoteConfig.revokeSecond;
+    //       if (revokeSecond > 0) {
+    //         const messageTime = new Date().getTime() / 1000 - message.timestamp;
+    //         if (messageTime > revokeSecond) {
+    //           //  超过两分钟则不显示撤回
+    //           return null;
+    //         }
+    //       }
+    //     }
+    //     return {
+    //       title: "撤回",
+    //       onClick: () => {
+    //         context.revokeMessage(message)
+    //       },
+    //     };
+    //   },
+    //   4000
+    // );
+    // WKApp.endpoints.registerMessageContextMenus(
+    //   "contextmenus.delete",
+    //   (message, context) => {
+    //     if (message.messageID == "") {
+    //       return null;
+    //     }
 
-        let isManager = false;
-        if (message.channel.channelType == ChannelTypeGroup) {
-          const sub = WKSDK.shared().channelManager.getSubscribeOfMe(
-            message.channel
-          );
-          if (sub?.role == GroupRole.manager || sub?.role == GroupRole.owner) {
-            isManager = true;
-          }
-        }
+    //     let isManager = false;
+    //     if (message.channel.channelType == ChannelTypeGroup) {
+    //       const sub = WKSDK.shared().channelManager.getSubscribeOfMe(
+    //         message.channel
+    //       );
+    //       if (sub?.role == GroupRole.manager || sub?.role == GroupRole.owner) {
+    //         isManager = true;
+    //       }
+    //     }
 
-        if (!isManager) {
-          Toast.error("非管理员不可撤回");
-        }
-        return {
-          title: "删除",
-          onClick: () => {
-            context.deleteMessages([message]).catch((err)=>{
-              Toast.error(err.msg);
-            })
-          },
-        };
-      },
-      4000
-    );
+    //     if (!isManager) {
+    //       Toast.error("非管理员不可撤回");
+    //     }
+    //     return {
+    //       title: "删除",
+    //       onClick: () => {
+    //         context.deleteMessages([message]).catch((err)=>{
+    //           Toast.error(err.msg);
+    //         })
+    //       },
+    //     };
+    //   },
+    //   4000
+    // );
   }
 
   registerUserInfo() {
