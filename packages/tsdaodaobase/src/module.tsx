@@ -618,18 +618,18 @@ export default class BaseModule implements IModule {
         };
       }
     );
-    WKApp.endpoints.registerMessageContextMenus(
-      "contextmenus.muli",
-      (message, context) => {
-        return {
-          title: "多选",
-          onClick: () => {
-            context.setEditOn(true);
-          },
-        };
-      },
-      3000
-    );
+    // WKApp.endpoints.registerMessageContextMenus(
+    //   "contextmenus.muli",
+    //   (message, context) => {
+    //     return {
+    //       title: "多选",
+    //       onClick: () => {
+    //         context.setEditOn(true);
+    //       },
+    //     };
+    //   },
+    //   3000
+    // );
     // WKApp.endpoints.registerMessageContextMenus(
     //   "contextmenus.revoke",
     //   (message, context) => {
