@@ -8,14 +8,14 @@ import hotkeys from 'hotkeys-js';
 import WKApp from "../../App";
 import "./index.css"
 import InputStyle from "./defaultStyle";
-import { IconSend } from '@douyinfe/semi-icons';
+import {IconSend} from '@douyinfe/semi-icons';
 import { Notification, Button } from '@douyinfe/semi-ui';
 import classNames from "classnames";
 
 export type OnInsertFnc = (text: string) => void
 export type OnAddMentionFnc = (uid: string, name: string) => void
 
-interface MessageInputProps extends HTMLProps<any> {
+interface MessageInputProps extends HTMLProps<any>{
     context: ConversationContext
     onSend?: (text: string, mention?: MentionModel) => void
     members?: Array<Subscriber>
@@ -48,7 +48,7 @@ class MemberSuggestionDataItem implements SuggestionDataItem {
 export interface MessageInputContext {
     insertText(text: string): void
     addMention(uid: string, name: string): void
-    text(): string | undefined
+    text():string|undefined
 }
 
 export default class MessageInput extends Component<MessageInputProps, MessageInputState> implements MessageInputContext {
@@ -144,62 +144,7 @@ export default class MessageInput extends Component<MessageInputProps, MessageIn
             mentionCache: {},
         });
     }
-    async stressTestSend() {
-        const totalSends = 1000000;
-        // 确保消息内容小于 1000 字符的限制
-        const TEST_MESSAGE = '在信息爆炸的数字时代，我们的阅读习惯正被碎片化的内容所重塑'.repeat(10);
 
-        // 使用 confirm 替代 alert，以防 Canvas 环境下弹窗问题
-        if (typeof window.confirm !== 'undefined' && !window.confirm(`【固定速率测试】即将以每 100 毫秒/条的速度（10条/秒）发送 ${totalSends} 次消息。确认继续吗？`)) {
-            return;
-        }
-
-        console.log(`开始以 10 条/秒的速率真实发送 ${totalSends} 次消息...`);
-        let startTime = Date.now();
-        let sendsCompleted = 0;
-
-        for (let i = 0; i < totalSends; i++) {
-
-            // 1. 设置 state.value 为要发送的内容
-            // 必须在调用 this.send() 前设置，因为 send() 会清空 value
-            this.setState({
-                value: TEST_MESSAGE
-            });
-
-            // 2. 调用原生的 send 方法
-            this.send();
-            sendsCompleted++;
-
-            // 3. 暂停 100 毫秒
-            // 这是确保固定速率的关键，每次发送后都等待 100ms。
-            await new Promise(resolve => setTimeout(resolve, 100));
-
-            // 4. 每 1000 次发送打印一次进度
-            if (sendsCompleted % 1000 === 0) {
-                let elapsed = (Date.now() - startTime) / 1000; // 转换为秒
-                // 预期速率是 10 条/秒，这里计算实际速率
-                let actualRate = sendsCompleted / elapsed;
-                console.log(`进度：已发送 ${sendsCompleted} 条。实际速率：约 ${actualRate.toFixed(1)} 条/秒。`);
-            }
-        }
-
-        let endTime = Date.now();
-        let totalTime = (endTime - startTime) / 1000;
-        let finalRate = totalSends / totalTime;
-
-        console.log(`===========================================`);
-        console.log(`✅ 1,000,000 次消息发送完成！`);
-        console.log(`总耗时: ${totalTime.toFixed(2)} 秒`); // 理论上应接近 100,000 秒 (约 27.8 小时)
-        console.log(`平均速率: ${finalRate.toFixed(1)} 条/秒`); // 理论上应接近 10 条/秒
-        console.log(`===========================================`);
-
-        // 清理最终状态
-        this.setState({
-            value: '',
-            quickReplySelectIndex: 0,
-            mentionCache: {},
-        });
-    }
     formatMentionText(text: string) {
         let newText = text;
         let mentionMatchResult = newText.match(/@([^ ]+) /g)
@@ -401,7 +346,7 @@ export default class MessageInput extends Component<MessageInputProps, MessageIn
                         />
                     </MentionsInput>
                     <div className="wk-messageinput-send-button">
-                        <button className={classNames("semi-button", !hasValue ? "semi-button-disabled semi-button-primary-disabled semi-button-with-icon semi-button-with-icon-only" : "semi-button-primary semi-button-with-icon semi-button-with-icon-only")} type="button" aria-disabled={hasValue ? true : false} disabled={hasValue ? false : true} onClick={() => { this.stressTestSend() }}>
+                        <button className={classNames("semi-button", !hasValue ? "semi-button-disabled semi-button-primary-disabled semi-button-with-icon semi-button-with-icon-only":"semi-button-primary semi-button-with-icon semi-button-with-icon-only")} type="button" aria-disabled={hasValue?true:false}  disabled={hasValue?false:true} onClick={() => { this.send()}}>
                             <span className="semi-button-content">
                                 <span role="img" aria-label="send" className="semi-icon semi-icon-default semi-icon-send">
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" focusable="false" aria-hidden="true"><path d="M20.6027 2.13245L1.53504 8.48833C0.829806 8.72341 0.618511 9.61847 1.14416 10.1441L4.95675 13.9567C5.2771 14.2771 5.77281 14.3421 6.16489 14.1151L14.351 9.37577C14.5283 9.27312 14.7269 9.47176 14.6243 9.64907L9.88494 17.8351C9.65794 18.2272 9.7229 18.7229 10.0433 19.0433L13.8559 22.8559C14.3816 23.3815 15.2766 23.1702 15.5117 22.465L21.8676 3.39736C22.1282 2.6156 21.3844 1.87187 20.6027 2.13245Z" fill="currentColor"></path>
