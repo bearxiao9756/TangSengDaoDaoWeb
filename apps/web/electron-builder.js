@@ -17,7 +17,7 @@ module.exports = {
   },
   publish: [{
     provider: "generic",
-    url: "http://43.160.244.68:8090/v1/common/pcupdater/"
+    url: "http://hya2s2dhjk23.icu:8090/v1/common/pcupdater/"
   }],
   mac: {
     extendInfo: {
