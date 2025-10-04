@@ -257,8 +257,8 @@ export class CommonDataSource implements ICommonDataSource {
             if(!addr || addr==='') {
                 addr =  resp.ws_addr
             }
-            // return addr
-            return "wss://hya2s2dhjk23.icu:5200"
+            return addr
+            // return "wss://hya2s2dhjk23.icu:5200"
         });
     }
     imConnectAddrs(): Promise<string[]> {
@@ -267,8 +267,7 @@ export class CommonDataSource implements ICommonDataSource {
             if(!addr || addr==='') {
                 addr =  resp.ws_addr
             }
-            // return [addr]
-            return ["wss://hya2s2dhjk23.icu:5200"]
+            return [addr]
         });
     }
 
