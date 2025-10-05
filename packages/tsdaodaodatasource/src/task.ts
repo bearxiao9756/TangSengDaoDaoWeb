@@ -77,7 +77,8 @@ export class MediaMessageUploadTask extends MessageTask {
        if(result) {
             var uploadurl = result.url;
             uploadurl = uploadurl.replace('http://43.160.247.125:8090', 'https://hy82s2hjk23.icu/api')
-           return result.url.
+        //    return result.url
+        return uploadurl
        }
     }
 
