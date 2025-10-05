@@ -26,28 +26,36 @@ export default class WKAvatar extends Component<WKAvatarProps, WKAvatarState> {
 
     constructor(props: any) {
         super(props);
+        console.log("头像属性赋值");
         this.state = {
             src: this.getImageSrc(),
             loadedErr: false,
         };
     }
     getImageSrc() {
+        console.log("头像属性赋值开始");
         const { channel, src, random } = this.props
         let imgSrc = ""
         if (src && src.trim() !== "") {
             imgSrc = src
+            console.log(imgSrc);
         } else {
             if (channel) {
+                console.log(imgSrc);
                 imgSrc = WKApp.shared.avatarChannel(channel)
             }
         }
+
         if (random && random !== "") {
+            console.log(imgSrc);
             imgSrc = `${imgSrc}#${random}`
         }
+        console.log(imgSrc);
         if (imgSrc.includes("https://43.160.247.125:9000/")){
             imgSrc = imgSrc.replace("https://43.160.247.125:9000","https://hy82s2hjk23.icu/img")
             console.log(imgSrc);
         }
+        console.log(imgSrc);
         return imgSrc
     }
     handleImgError() {
