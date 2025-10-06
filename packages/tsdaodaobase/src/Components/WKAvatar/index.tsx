@@ -23,40 +23,59 @@ export interface WKAvatarState {
 }
 
 export default class WKAvatar extends Component<WKAvatarProps, WKAvatarState> {
-
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            src: this.getImageSrc(),
-            loadedErr: false,
-        };
-    }
-    getImageSrc() {
-        const { channel, src, random } = this.props
-        let imgSrc = ""
-        if (src && src.trim() !== "") {
-            imgSrc = src
-        } else {
-            if (channel) {
-                imgSrc = WKApp.shared.avatarChannel(channel)
-            }
-        }
-        if (random && random !== "") {
-            imgSrc = `${imgSrc}#${random}`
-        }
-        return imgSrc
-    }
-    handleImgError() {
-        this.setState({ src: defaultAvatarSVG, loadedErr: true });
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      src: this.getImageSrc(),
+      loadedErr: false,
     };
-    handleLoad() {
-        if(!this.state.loadedErr) {
-            this.setState({ src: this.getImageSrc() })
-        }
-        
+  }
+  getImageSrc() {
+    const { channel, src, random } = this.props;
+    let imgSrc = "";
+    if (src && src.trim() !== "") {
+      imgSrc = src;
+    } else {
+      if (channel) {
+        imgSrc = WKApp.shared.avatarChannel(channel);
+      }
     }
-    render() {
-        const { style } = this.props
-        return <img alt="" style={style} className="wk-avatar" src={this.state.src} onLoad={this.handleLoad.bind(this)} onError={this.handleImgError.bind(this)} />
+    if (random && random !== "") {
+      imgSrc = `${imgSrc}#${random}`;
     }
+    console.log(imgSrc);
+    if (imgSrc.includes("https://43.160.244.68:9000/")) {
+      imgSrc = imgSrc.replace(
+        "https://43.160.244.68:9000",
+        "https://customgoodservice.icu/img"
+      );
+
+      console.log(imgSrc);
+    }
+    if (!imgSrc.includes("https://customgoodservice.icu")) {
+      imgSrc = "https://customgoodservice.icu" + imgSrc;
+    }
+    return imgSrc;
+  }
+  handleImgError() {
+    this.setState({ src: defaultAvatarSVG, loadedErr: true });
+  }
+  handleLoad() {
+    if (!this.state.loadedErr) {
+      this.setState({ src: this.getImageSrc() });
+    }
+  }
+  render() {
+    const { style } = this.props;
+    return (
+      <img
+        alt=""
+        style={style}
+        className="wk-avatar"
+        src={this.state.src}
+        onLoad={this.handleLoad.bind(this)}
+        onError={this.handleImgError.bind(this)}
+      />
+    );
+  }
 }

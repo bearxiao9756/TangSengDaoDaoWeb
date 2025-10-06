@@ -7,10 +7,7 @@ import  { BaseModule, WKApp } from '@tsdaodao/base';
 import  { LoginModule } from '@tsdaodao/login';
 import  { DataSourceModule } from '@tsdaodao/datasource';
 import {ContactsModule} from '@tsdaodao/contacts';
-
-// const apiURL = "https://43.160.244.68/v1/"
-// const apiURL = "http://172.16.9.135:8090/v1/"
-const apiURL = "http://43.160.244.68:8090/v1/"
+const apiURL = "https://customgoodservice.icu/api/v1/"
 
 if((window as any).__TAURI_IPC__) { // tauri环境
   console.log("tauri环境")
