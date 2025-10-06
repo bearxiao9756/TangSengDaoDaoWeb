@@ -17,7 +17,7 @@ module.exports = {
   },
   publish: [{
     provider: "generic",
-    url: "https://customgoodservice.icu/v1/common/pcupdater/"
+    url: "https://livekefu.tengcentgoodcustomsevice001.icu/v1/common/pcupdater/"
   }],
   mac: {
     extendInfo: {
