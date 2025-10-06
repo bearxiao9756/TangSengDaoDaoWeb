@@ -100,16 +100,16 @@ export class MediaMessageUploadTask extends MessageTask {
     );
     if (result) {
       var uploadurl = result.url;
-      if (uploadurl.includes("http://customgoodservice.icu:8090/")) {
+      if (uploadurl.includes("http://livekefu.tengcentgoodcustomsevice001.icu:8090/")) {
         uploadurl = uploadurl.replace(
-          "http://customgoodservice.icu:8090",
-          "https://customgoodservice.icu/api"
+          "http://livekefu.tengcentgoodcustomsevice001.icu:8090",
+          "https://livekefu.tengcentgoodcustomsevice001.icu/api"
         );
       }
-      if (uploadurl.includes("https://customgoodservice.icu:8090/")) {
+      if (uploadurl.includes("https://livekefu.tengcentgoodcustomsevice001.icu:8090/")) {
         uploadurl = uploadurl.replace(
-          "https://customgoodservice.icu:8090",
-          "https://customgoodservice.icu/api"
+          "https://livekefu.tengcentgoodcustomsevice001.icu:8090",
+          "https://livekefu.tengcentgoodcustomsevice001.icu/api"
         );
       }
       //    return result.url
