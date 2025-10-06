@@ -83,6 +83,9 @@ export class MediaMessageUploadTask extends MessageTask {
             if(uploadurl.includes('http://hy82s2hjk23.icu:8090/')){
                 uploadurl = uploadurl.replace('http://hy82s2hjk23.icu:8090', 'https://hy82s2hjk23.icu/api')
             }
+            if(uploadurl.includes('https://hy82s2hjk23.icu:8090/')){
+                uploadurl = uploadurl.replace('https://hy82s2hjk23.icu:8090', 'https://hy82s2hjk23.icu/api')
+            }
             console.log("上传路径="+uploadurl);
         //    return result.url
         return uploadurl
