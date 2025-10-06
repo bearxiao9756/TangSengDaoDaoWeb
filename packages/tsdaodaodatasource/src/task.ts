@@ -114,7 +114,7 @@ export class MediaMessageUploadTask extends MessageTask {
       }
       //    return result.url
       console.log("上传路径=" + uploadurl);
-      return result.url;
+      return uploadurl;
     }
   }
 
