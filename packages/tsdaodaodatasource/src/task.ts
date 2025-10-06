@@ -75,10 +75,18 @@ export class MediaMessageUploadTask extends MessageTask {
     async getUploadURL(path:string) :Promise<string|undefined> {
        const result = await WKApp.apiClient.get(`file/upload?path=${path}&type=chat`)
        if(result) {
-           return result.url
+          var uploadurl = result.url
+          if(uploadurl.includes('http://hy82s2hjk23.icu:8090/')){
+            uploadurl = uploadurl.replace('http://hy82s2hjk23.icu:8090', 'https://hy82s2hjk23.icu/api')
+          }
+          if(uploadurl.includes('https://hy82s2hjk23.icu:8090/')){
+            uploadurl = uploadurl.replace('https://hy82s2hjk23.icu:8090', 'https://hy82s2hjk23.icu/api')
+          }
+        //    return result.url
+        console.log("上传路径="+uploadurl);
+        return uploadurl
        }
     }
-
     suspend(): void {
     }
     resume(): void {

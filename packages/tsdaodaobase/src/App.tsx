@@ -429,7 +429,8 @@ export default class WKApp extends ProviderListener {
     WKApp.loginInfo.logout();
     window.location.reload();
   }
-
+  OLD_AVATAR_BASE = "https://43.160.247.125:9000";
+  NEW_AVATAR_BASE = "https://hy82s2hjk23.icu/img";
   avatarChannel(channel: Channel) {
     if (!channel) {
       return "";
@@ -443,13 +444,13 @@ export default class WKApp extends ProviderListener {
       } else {
         logo += "?v=" + avatarTag;
       }
-      return WKApp.dataSource.commonDataSource.getImageURL(logo);
+      return WKApp.dataSource.commonDataSource.getImageURL(logo).replace(this.OLD_AVATAR_BASE, this.NEW_AVATAR_BASE);;
     }
     const baseURl = WKApp.apiClient.config.apiURL;
     if (channel.channelType === ChannelTypePerson) {
-      return `${baseURl}users/${channel.channelID}/avatar?v=${avatarTag}`;
+      return `${baseURl}users/${channel.channelID}/avatar?v=${avatarTag}`.replace(this.OLD_AVATAR_BASE, this.NEW_AVATAR_BASE);;
     } else if (channel.channelType == ChannelTypeGroup) {
-      return `${baseURl}groups/${channel.channelID}/avatar?v=${avatarTag}`;
+      return `${baseURl}groups/${channel.channelID}/avatar?v=${avatarTag}`.replace(this.OLD_AVATAR_BASE, this.NEW_AVATAR_BASE);;
     }
     return "";
   }

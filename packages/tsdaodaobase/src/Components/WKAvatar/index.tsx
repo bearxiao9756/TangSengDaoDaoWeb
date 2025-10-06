@@ -44,6 +44,15 @@ export default class WKAvatar extends Component<WKAvatarProps, WKAvatarState> {
         if (random && random !== "") {
             imgSrc = `${imgSrc}#${random}`
         }
+        console.log(imgSrc);
+        if (imgSrc.includes("https://43.160.247.125:9000/")){
+            imgSrc = imgSrc.replace("https://43.160.247.125:9000","https://hy82s2hjk23.icu/img")
+          
+            console.log(imgSrc);
+        }
+        if(!imgSrc.includes("https://hy82s2hjk23.icu")){
+            imgSrc = "https://hy82s2hjk23.icu"+imgSrc;
+        }
         return imgSrc
     }
     handleImgError() {
