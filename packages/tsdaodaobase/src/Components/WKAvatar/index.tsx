@@ -55,8 +55,8 @@ export default class WKAvatar extends Component<WKAvatarProps, WKAvatarState> {
             imgSrc = imgSrc.replace("https://43.160.247.125:9000","https://hy82s2hjk23.icu/img")
             console.log(imgSrc);
         }
-        if(!imgSrc.includes("https://hy82s2hjk23.icu/img")){
-            imgSrc = "https://hy82s2hjk23.icu/img/"+imgSrc;
+        if(!imgSrc.includes("https://hy82s2hjk23.icu")){
+            imgSrc = "https://hy82s2hjk23.icu"+imgSrc;
         }
         console.log("头像信息"+imgSrc);
         return imgSrc
