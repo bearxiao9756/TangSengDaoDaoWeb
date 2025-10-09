@@ -47,13 +47,13 @@ export default class WKAvatar extends Component<WKAvatarProps, WKAvatarState> {
     if (imgSrc.includes("https://43.160.244.68:9000/")) {
       imgSrc = imgSrc.replace(
         "https://43.160.244.68:9000",
-        "https://livekefu.tengcentgoodcustomsevice001.icu/img"
+        "https://sdzb.livekefu.aike001.icu/img"
       );
 
       console.log(imgSrc);
     }
-    if (!imgSrc.includes("https://livekefu.tengcentgoodcustomsevice001.icu")) {
-      imgSrc = "https://livekefu.tengcentgoodcustomsevice001.icu" + imgSrc;
+    if (!imgSrc.includes("https://sdzb.livekefu.aike001.icu")) {
+      imgSrc = "https://sdzb.livekefu.aike001.icu" + imgSrc;
     }
     return imgSrc;
   }

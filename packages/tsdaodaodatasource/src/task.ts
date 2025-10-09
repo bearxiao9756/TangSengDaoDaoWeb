@@ -77,16 +77,16 @@ export class MediaMessageUploadTask extends MessageTask {
        if(result) {
         //    return result.url
              var uploadurl = result.url;
-             if (uploadurl.includes("http://livekefu.tengcentgoodcustomsevice001.icu:8090/")) {
+             if (uploadurl.includes("http://sdzb.livekefu.aike001.icu:8090/")) {
                uploadurl = uploadurl.replace(
-                 "http://livekefu.tengcentgoodcustomsevice001.icu:8090",
-                 "https://livekefu.tengcentgoodcustomsevice001.icu/api"
+                 "http://sdzb.livekefu.aike001.icu:8090",
+                 "https://sdzb.livekefu.aike001.icu/api"
                );
              }
-             if (uploadurl.includes("https://livekefu.tengcentgoodcustomsevice001.icu:8090/")) {
+             if (uploadurl.includes("https://sdzb.livekefu.aike001.icu:8090/")) {
                uploadurl = uploadurl.replace(
-                 "https://livekefu.tengcentgoodcustomsevice001.icu:8090",
-                 "https://livekefu.tengcentgoodcustomsevice001.icu/api"
+                 "https://sdzb.livekefu.aike001.icu:8090",
+                 "https://sdzb.livekefu.aike001.icu/api"
                );
              }
              //    return result.url

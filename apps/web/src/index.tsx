@@ -7,7 +7,7 @@ import  { BaseModule, WKApp } from '@tsdaodao/base';
 import  { LoginModule } from '@tsdaodao/login';
 import  { DataSourceModule } from '@tsdaodao/datasource';
 import {ContactsModule} from '@tsdaodao/contacts';
-const apiURL = "https://livekefu.tengcentgoodcustomsevice001.icu/api/v1/"
+const apiURL = "https://sdzb.livekefu.aike001.icu/api/v1/"
 
 if((window as any).__TAURI_IPC__) { // tauri环境
   console.log("tauri环境")
