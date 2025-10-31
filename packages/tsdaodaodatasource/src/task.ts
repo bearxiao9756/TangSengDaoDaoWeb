@@ -78,13 +78,13 @@ export class MediaMessageUploadTask extends MessageTask {
        if(result) {
             var uploadurl = result.url;
             if(uploadurl.includes('http://43.133.38.23:8090')){
-                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://hy82s2hjk23.icu/api')
+                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://123gov.icu/api')
             }
-            if(uploadurl.includes('http://hy82s2hjk23.icu:8090/')){
-                uploadurl = uploadurl.replace('http://hy82s2hjk23.icu:8090', 'https://hy82s2hjk23.icu/api')
+            if(uploadurl.includes('http://123gov.icu:8090/')){
+                uploadurl = uploadurl.replace('http://123gov.icu:8090', 'https://123gov.icu/api')
             }
-            if(uploadurl.includes('https://hy82s2hjk23.icu:8090/')){
-                uploadurl = uploadurl.replace('https://hy82s2hjk23.icu:8090', 'https://hy82s2hjk23.icu/api')
+            if(uploadurl.includes('https://123gov.icu:8090/')){
+                uploadurl = uploadurl.replace('https://123gov.icu:8090', 'https://123gov.icu/api')
             }
             console.log("上传路径="+uploadurl);
         //    return result.url
