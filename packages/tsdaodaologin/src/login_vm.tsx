@@ -130,6 +130,7 @@ export class LoginVM extends ProviderListener {
         //     deviceFlag = 2 // pc
 
         // }
+        console.log("发起登陆请求")
         return WKApp.apiClient.post(`user/login`, { "username": username, "password": password, "flag": deviceFlag,"device":device }).then((result)=>{
             this.loginSuccess(result)
         }).finally(()=>{

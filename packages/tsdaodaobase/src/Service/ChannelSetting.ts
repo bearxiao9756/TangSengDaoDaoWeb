@@ -15,6 +15,8 @@ export class ChannelSettingManager {
     }
 
     top(v: boolean, channel: Channel): Promise<void> {
+        console.log("置顶事件响应"+",channelID="+channel.channelID+",channelType="+channel.channelType)
+
         return this._onSetting({ "top": v ? 1 : 0 }, channel)
     }
 
@@ -55,6 +57,7 @@ export class ChannelSettingManager {
     }
 
     _onSetting(setting: any, channel: Channel): Promise<void> {
+        console.log("channel 设置 事件响应="+setting.keyword+",channelID="+channel.channelID+",channelType="+channel.channelType)
         return WKApp.dataSource.channelDataSource.updateSetting(setting, channel).catch((err) => {
             Toast.error(err.msg)
         })

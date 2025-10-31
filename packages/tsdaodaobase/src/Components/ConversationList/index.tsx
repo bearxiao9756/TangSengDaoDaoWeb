@@ -223,6 +223,7 @@ export default class ConversationList extends Component<ConversationListProps, C
     }
 
     onTop(channelInfo: ChannelInfo) {
+        console.log("置顶事件响应"+",channelID="+channelInfo.channel.channelID+",channelType="+channelInfo.channel.channelType+",channelInfo.title="+channelInfo.title)
         ChannelSettingManager.shared.top(!channelInfo.top, channelInfo.channel)
     }
 
@@ -255,6 +256,7 @@ export default class ConversationList extends Component<ConversationListProps, C
             }} menus={[
                 {
                     title: selectConversationWrap?.channelInfo?.top ? "取消置顶" : "置顶", onClick: () => {
+                        console.log("点击了置顶操作")
                         this.onTop(selectConversationWrap?.channelInfo!)
                     }
                 },
@@ -263,22 +265,22 @@ export default class ConversationList extends Component<ConversationListProps, C
                         this.onMute(selectConversationWrap?.channelInfo!)
                     }
                 },
-                // {
-                //     title: "关闭聊天窗口", onClick: () => {
-                //         this.onCloseChat(selectConversationWrap?.channel!)
-                //     }
-                // },
-                // {
-                //     title: "清空聊天记录", onClick: () => {
-                //         this.onClearMessages(selectConversationWrap?.channel!)
-                //     }
-                // },
-                // {
-                //     title: "关闭窗口并清空聊天记录", onClick: () => {
-                //         this.onCloseChat(selectConversationWrap?.channel!)
-                //         this.onClearMessages(selectConversationWrap?.channel!)
-                //     }
-                // },
+                {
+                    title: "关闭聊天窗口", onClick: () => {
+                        this.onCloseChat(selectConversationWrap?.channel!)
+                    }
+                },
+                {
+                    title: "清空聊天记录", onClick: () => {
+                        this.onClearMessages(selectConversationWrap?.channel!)
+                    }
+                },
+                {
+                    title: "关闭窗口并清空聊天记录", onClick: () => {
+                        this.onCloseChat(selectConversationWrap?.channel!)
+                        this.onClearMessages(selectConversationWrap?.channel!)
+                    }
+                },
             ]} />
         </div>
     }

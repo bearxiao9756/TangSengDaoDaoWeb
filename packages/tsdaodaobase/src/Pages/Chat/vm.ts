@@ -91,7 +91,8 @@ export class ChatVM extends ProviderListener {
 
         // ---------- 最近会话 ----------
         this.conversationListener = (conversation: Conversation, action: ConversationAction) => {
-
+             
+            console.log("最近会话更新")
             const channelInfo = WKSDK.shared().channelManager.getChannelInfo(conversation.channel)
             if (!channelInfo) {
                 WKSDK.shared().channelManager.fetchChannelInfo(conversation.channel)

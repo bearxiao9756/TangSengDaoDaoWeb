@@ -217,10 +217,9 @@ export default class BaseModule implements IModule {
     }
 
     WKSDK.shared().chatManager.addCMDListener((message: Message) => {
-      console.log("收到CMD->", message);
       const cmdContent = message.content as CMDContent;
       const param = cmdContent.param;
-
+      console.log("收到CMD->addCMDListener==", cmdContent.cmd);
       if (cmdContent.cmd === "channelUpdate") {
         // 频道信息更新
         WKSDK.shared().channelManager.fetchChannelInfo(
