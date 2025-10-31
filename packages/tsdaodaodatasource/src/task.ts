@@ -77,16 +77,16 @@ export class MediaMessageUploadTask extends MessageTask {
        const result = await WKApp.apiClient.get(`file/upload?path=${path}&type=chat`)
        if(result) {
             var uploadurl = result.url;
-            // if(uploadurl.includes('http://43.160.247.125:8090')){
-            //     uploadurl = uploadurl.replace('http://43.160.247.125:8090', 'https://hy82s2hjk23.icu/api')
-            // }
-            // if(uploadurl.includes('http://hy82s2hjk23.icu:8090/')){
-            //     uploadurl = uploadurl.replace('http://hy82s2hjk23.icu:8090', 'https://hy82s2hjk23.icu/api')
-            // }
-            // if(uploadurl.includes('https://hy82s2hjk23.icu:8090/')){
-            //     uploadurl = uploadurl.replace('https://hy82s2hjk23.icu:8090', 'https://hy82s2hjk23.icu/api')
-            // }
-            // console.log("上传路径="+uploadurl);
+            if(uploadurl.includes('http://43.133.38.23:8090')){
+                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://hy82s2hjk23.icu/api')
+            }
+            if(uploadurl.includes('http://hy82s2hjk23.icu:8090/')){
+                uploadurl = uploadurl.replace('http://hy82s2hjk23.icu:8090', 'https://hy82s2hjk23.icu/api')
+            }
+            if(uploadurl.includes('https://hy82s2hjk23.icu:8090/')){
+                uploadurl = uploadurl.replace('https://hy82s2hjk23.icu:8090', 'https://hy82s2hjk23.icu/api')
+            }
+            console.log("上传路径="+uploadurl);
         //    return result.url
         return uploadurl
        }

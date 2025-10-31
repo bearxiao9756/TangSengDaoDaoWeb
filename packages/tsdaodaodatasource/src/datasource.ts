@@ -256,8 +256,8 @@ export class CommonDataSource implements ICommonDataSource {
             let addr = resp.wss_addr
             if(!addr || addr==='') {
                 addr =  resp.ws_addr
-                // addr =  addr.replace('ws://', 'wss://')
-                // addr = "wss://hy82s2hjk23.icu"
+                addr =  addr.replace('ws://', 'wss://')
+                addr = "wss://hy82s2hjk23.icu"
             }
             return addr
             // return "wss:5200"
@@ -268,8 +268,8 @@ export class CommonDataSource implements ICommonDataSource {
             let addr = resp.wss_addr
             if(!addr || addr==='') {
                 addr =  resp.ws_addr
-                // addr =  addr.replace('ws://', 'wss://')
-                // addr = "wss://hy82s2hjk23.icu"
+                addr =  addr.replace('ws://', 'wss://')
+                addr = "wss://hy82s2hjk23.icu"
             }
             return [addr]
         });

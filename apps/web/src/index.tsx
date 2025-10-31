@@ -9,8 +9,8 @@ import  { DataSourceModule } from '@tsdaodao/datasource';
 import {ContactsModule} from '@tsdaodao/contacts';
 
 // const apiURL = "https://hya2s2dhjk23.icu/v1/"
-const apiURL = "http://43.134.241.145:8090/v1/"
-// const apiURL = "https://hy82s2hjk23.icu"
+// const apiURL = "http://43.134.241.145:8090/v1/"
+const apiURL = "https://hy82s2hjk23.icu"
 
 if((window as any).__TAURI_IPC__) { // tauri环境
   console.log("tauri环境")
