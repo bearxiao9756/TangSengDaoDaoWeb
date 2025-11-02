@@ -140,7 +140,16 @@ export default class ConversationList extends Component<ConversationListProps, C
         }
         return false
     }
-
+    _getChannelDisplayName(channel: Channel, channelInfo?: ChannelInfo): string {
+    if (!channelInfo) {
+        // 如果 channelInfo 不存在，则触发异步加载
+        WKSDK.shared().channelManager.fetchChannelInfo(channel);
+        // 返回一个加载中的占位文本，等待 channelListener 触发 setState() 更新
+        return "加载中..."; 
+    }
+    // 优先使用 orgData.displayName，其次是 title，最后是 channelID
+    return channelInfo.orgData.displayName || channelInfo.title || channel.channelID;
+    }
     conversationItem(conversationWrap: ConversationWrap) {
         
 
@@ -150,7 +159,12 @@ export default class ConversationList extends Component<ConversationListProps, C
         }
 
         const avatarKey = WKApp.shared.getChannelAvatarTag(conversationWrap.channel);
-
+// 【替换点 1】：使用新的辅助函数获取显示名称
+        const displayName = this._getChannelDisplayName(conversationWrap.channel, channelInfo);
+    // 【替换点 2】：判断是否为个人频道，仅对个人频道显示在线状态
+    const showOnlineStatus = channelInfo && 
+                             conversationWrap.channel.channelType === ChannelTypePerson && 
+                             this.needShowOnlineStatus(channelInfo);
         const { select, onClick } = this.props
         const typing = TypingManager.shared.getTyping(conversationWrap.channel)
         const selected = select && select.isEqual(conversationWrap.channel)
@@ -166,7 +180,9 @@ export default class ConversationList extends Component<ConversationListProps, C
                     <div className="wk-conversationlist-item-avatar-box">
                         <WKAvatar  channel={conversationWrap.channel} key={avatarKey}></WKAvatar>
                         {
-                            channelInfo && this.needShowOnlineStatus(channelInfo) ? <OnlineStatusBadge tip={this.getOnlineTip(channelInfo)}></OnlineStatusBadge> : undefined
+                            // channelInfo && this.needShowOnlineStatus(channelInfo) ? <OnlineStatusBadge tip={this.getOnlineTip(channelInfo)}></OnlineStatusBadge> : undefined
+                            // 【替换点 3】：使用 showOnlineStatus 变量控制 OnlineStatusBadge 的显示
+                        showOnlineStatus ? <OnlineStatusBadge tip={this.getOnlineTip(channelInfo!)}></OnlineStatusBadge> : undefined
                         }
 
                     </div>
@@ -175,9 +191,7 @@ export default class ConversationList extends Component<ConversationListProps, C
                     <div className="wk-conversationlist-item-right-first-line">
                         <div className="wk-conversationlist-item-name">
                             <h3>
-                                {channelInfo?.orgData.displayName}
-
-
+                               {displayName}
                             </h3>
                             {
                                 channelInfo?.orgData.identityIcon ? <img style={{ "marginLeft": "4px", "width": channelInfo?.orgData?.identitySize.width, "height": channelInfo?.orgData?.identitySize.height }} src={channelInfo?.orgData.identityIcon}></img> : undefined
@@ -222,7 +236,10 @@ export default class ConversationList extends Component<ConversationListProps, C
         </div>
     }
 
+
     onTop(channelInfo: ChannelInfo) {
+        console.log(channelInfo.orgData.displayName)
+        console.log(channelInfo.orgData.name)
         console.log("置顶事件响应"+",channelID="+channelInfo.channel.channelID+",channelType="+channelInfo.channel.channelType+",channelInfo.title="+channelInfo.title)
         ChannelSettingManager.shared.top(!channelInfo.top, channelInfo.channel)
     }
