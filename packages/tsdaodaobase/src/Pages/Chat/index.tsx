@@ -61,6 +61,10 @@ export class ChatContentPage extends Component<
     const channelInfo = WKSDK.shared().channelManager.getChannelInfo(channel);
     if (!channelInfo) {
       WKSDK.shared().channelManager.fetchChannelInfo(channel);
+    }else{
+      console.log("65 channelID="+channelInfo.channel.channelID)
+      console.log("65 channelType="+channelInfo.channel.channelType)
+      console.log("65 displayName="+channelInfo.orgData.displayName)
     }
     return (
       <div
