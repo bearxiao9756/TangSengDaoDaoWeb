@@ -102,6 +102,14 @@ export class ChatVM extends ProviderListener {
                 if (conversation.lastMessage?.content && conversation.lastMessage?.contentType === MessageContentType.text) {
                     conversation.lastMessage.content.text = ProhibitwordsService.shared.filter(conversation.lastMessage?.content.text)
                 }
+                console.log(conversation.lastMessage?.content)
+                console.log(conversation.lastMessage?.contentType)
+                console.log(conversation.lastMessage?.fromUID)
+                console.log(conversation.lastMessage?.messageID)
+                console.log(conversation.lastMessage?.channel)
+                console.log(conversation.channelInfo?.orgData)
+                console.log(conversation)
+                console.log("ConversationAction-----add")
                 this.conversations = [new ConversationWrap(conversation), ...this.conversations]
                 this.notifyListener()
             } else if (action === ConversationAction.update) {
