@@ -373,7 +373,7 @@ export default class BaseModule implements IModule {
 
       if (this.allowNotify(message)) {
         let from = "";
-        if (message.channel.channelType === ChannelTypeGroup) {
+        if (message.channel.channelType === ChannelTypePerson) {
           const fromChannelInfo = WKSDK.shared().channelManager.getChannelInfo(
             new Channel(message.fromUID, ChannelTypePerson)
           );
@@ -617,18 +617,18 @@ export default class BaseModule implements IModule {
         };
       }
     );
-    // WKApp.endpoints.registerMessageContextMenus(
-    //   "contextmenus.muli",
-    //   (message, context) => {
-    //     return {
-    //       title: "多选",
-    //       onClick: () => {
-    //         context.setEditOn(true);
-    //       },
-    //     };
-    //   },
-    //   3000
-    // );
+    WKApp.endpoints.registerMessageContextMenus(
+      "contextmenus.muli",
+      (message, context) => {
+        return {
+          title: "多选",
+          onClick: () => {
+            context.setEditOn(true);
+          },
+        };
+      },
+      3000
+    );
     WKApp.endpoints.registerMessageContextMenus(
       "contextmenus.revoke",
       (message, context) => {
