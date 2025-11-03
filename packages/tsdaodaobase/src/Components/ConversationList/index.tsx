@@ -17,6 +17,7 @@ import { BeatLoader } from "react-spinners";
 import { RevokeCell } from "../../Messages/Revoke";
 import { FlameMessageCell } from "../../Messages/Flame";
 import WKAvatar from "../WKAvatar";
+import { Contacts } from "../../Service/DataSource/DataSource";
 export interface ConversationListProps {
   conversations: ConversationWrap[];
   select?: Channel;
@@ -159,9 +160,9 @@ export default class ConversationList extends Component<
   _getChannelDisplayName(channel: Channel, channelInfo?: ChannelInfo): string {
     if (!channelInfo) {
       // // 如果 channelInfo 不存在，则触发异步加载
-      // WKSDK.shared().channelManager.fetchChannelInfo(channel);
-      // // 返回一个加载中的占位文本，等待 channelListener 触发 setState() 更新
-      // return "加载中...";
+      WKSDK.shared().channelManager.fetchChannelInfo(channel);
+      // 返回一个加载中的占位文本，等待 channelListener 触发 setState() 更新
+      return "加载中...";
     }
     console.log("displayName="+channelInfo?.orgData.displayName)
     console.log("name="+channelInfo?.orgData.name)
@@ -354,7 +355,16 @@ export default class ConversationList extends Component<
     );
     ChannelSettingManager.shared.top(!channelInfo.top, channelInfo.channel);
   }
-
+  onremark(channelInfo: ChannelInfo) {
+    console.log(channelInfo.orgData.displayName);
+    console.log(channelInfo.channel.channelID);
+    console.log(channelInfo.channel.channelType);
+    if(channelInfo.channel.channelType != 1){
+        Toast.error("不支持群组修改备注")
+    }else{
+       WKApp.shared.baseContext.showUserInfo(channelInfo.channel.channelID, channelInfo.channel)
+    }
+  }
   onMute(channelInfo: ChannelInfo) {
     ChannelSettingManager.shared.mute(!channelInfo.mute, channelInfo.channel);
   }
@@ -423,6 +433,13 @@ export default class ConversationList extends Component<
               onClick: () => {
                 this.onCloseChat(selectConversationWrap?.channel!);
                 this.onClearMessages(selectConversationWrap?.channel!);
+              },
+            },
+             {
+              title: "修改备注",
+              onClick: () => {
+                console.log("点击了置顶操作");
+                this.onremark(selectConversationWrap?.channelInfo!);
               },
             },
           ]}
