@@ -360,9 +360,11 @@ export default class ConversationList extends Component<
     console.log(channelInfo.channel.channelID);
     console.log(channelInfo.channel.channelType);
     if(channelInfo.channel.channelType == 1){
-        Toast.error("不支持群组修改备注")
+      WKApp.shared.baseContext.showUserInfo(channelInfo.channel.channelID)
+        
     }else{
-       WKApp.shared.baseContext.showUserInfo(channelInfo.channel.channelID)
+      Toast.error("不支持群组修改备注")
+      WKApp.shared.baseContext.showUserInfo(channelInfo.channel.channelID)
     }
   }
   onMute(channelInfo: ChannelInfo) {
