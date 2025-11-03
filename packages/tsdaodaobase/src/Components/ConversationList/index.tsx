@@ -158,20 +158,20 @@ export default class ConversationList extends Component<
   }
   _getChannelDisplayName(channel: Channel, channelInfo?: ChannelInfo): string {
     if (!channelInfo) {
-      // 如果 channelInfo 不存在，则触发异步加载
-      WKSDK.shared().channelManager.fetchChannelInfo(channel);
-      // 返回一个加载中的占位文本，等待 channelListener 触发 setState() 更新
-      return "加载中...";
+      // // 如果 channelInfo 不存在，则触发异步加载
+      // WKSDK.shared().channelManager.fetchChannelInfo(channel);
+      // // 返回一个加载中的占位文本，等待 channelListener 触发 setState() 更新
+      // return "加载中...";
     }
-    console.log("displayName="+channelInfo.orgData.displayName)
-    console.log("displayName="+channelInfo.orgData.name)
-    console.log("displayName="+channelInfo.orgData.fromName)
-    console.log("displayName="+channelInfo.orgData.channelID)
-    console.log("displayName="+channelInfo.orgData.fromUID)
-    console.log("displayName="+channelInfo.orgData.title)
+    console.log("displayName="+channelInfo?.orgData.displayName)
+    console.log("name="+channelInfo?.orgData.name)
+    console.log("name="+channelInfo?.orgData.name)
+    console.log("channelID="+channelInfo?.orgData.channelID)
+    console.log("fromUID="+channelInfo?.orgData.fromUID)
+    console.log("title="+channelInfo?.orgData.title)
     // 优先使用 orgData.displayName，其次是 title，最后是 channelID
     return (
-      channelInfo.orgData.displayName || channelInfo.title || channel.channelID
+      channelInfo?.orgData.displayName || channelInfo?.title || channel?.channelID
     );
   }
   conversationItem(conversationWrap: ConversationWrap) {
