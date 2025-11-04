@@ -187,11 +187,12 @@ export class UserInfoVM extends ProviderListener {
   isSelf() {
     return WKApp.loginInfo.uid === this.uid;
   }
-
+  //刷新频道信息
   async reloadChannelInfo() {
     const res = await WKApp.apiClient.get(`users/${this.uid}`, {
       param: { group_no: this.fromChannel?.channelID || '' },
     });
+    console.log("刷新频道信息")
     this.channelInfo = Convert.userToChannelInfo(res);
     if (!this.vercode || this.vercode == "") {
       if (res.vercode && res.vercode !== "") {
@@ -201,6 +202,7 @@ export class UserInfoVM extends ProviderListener {
 
     this.notifyListener();
   }
+  //刷新频道信息
   reloadFromChannelInfo() {
     if (this.fromChannel) {
       this.fromChannelInfo = WKSDK.shared().channelManager.getChannelInfo(

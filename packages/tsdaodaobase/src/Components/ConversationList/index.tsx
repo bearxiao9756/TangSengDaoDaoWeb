@@ -355,16 +355,15 @@ export default class ConversationList extends Component<
     );
     ChannelSettingManager.shared.top(!channelInfo.top, channelInfo.channel);
   }
-  onremark(channelInfo: ChannelInfo) {
-    console.log(channelInfo.orgData.displayName);
-    console.log(channelInfo.channel.channelID);
-    console.log(channelInfo.channel.channelType);
-    if(channelInfo.channel.channelType == 1){
-      WKApp.shared.baseContext.showUserInfo(channelInfo.channel.channelID)
-        
+  onremark(channel: Channel) {
+    // console.log(channelInfo.orgData.displayName);
+    // console.log(channelInfo.channel.channelID);
+    // console.log(channelInfo.channel.channelType);
+    if(channel.channelType == 1){
+      WKApp.shared.baseContext.showUserInfo(channel.channelID)
     }else{
       Toast.error("不支持群组修改备注")
-      WKApp.shared.baseContext.showUserInfo(channelInfo.channel.channelID)
+      WKApp.shared.baseContext.showUserInfo(channel.channelID)
     }
   }
   onMute(channelInfo: ChannelInfo) {
@@ -441,7 +440,8 @@ export default class ConversationList extends Component<
               title: "修改备注",
               onClick: () => {
                 console.log("点击了置顶操作");
-                this.onremark(selectConversationWrap?.channelInfo!);
+                
+                this.onremark(selectConversationWrap?.channel!);
               },
             },
           ]}

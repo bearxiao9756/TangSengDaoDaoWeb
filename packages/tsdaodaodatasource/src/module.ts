@@ -259,7 +259,9 @@ export default class DataSourceModule implements IModule {
         const users = resp.users;
         if (users && users.length > 0) {
           for (const user of users) {
+            console.log("设置频道信息"+user)
             WKSDK.shared().channelManager.setChannleInfoForCache(
+              
               Convert.userToChannelInfo(user)
             );
           }
@@ -267,6 +269,7 @@ export default class DataSourceModule implements IModule {
         const groups = resp.groups;
         if (groups && groups.length > 0) {
           for (const group of groups) {
+            console.log("设置频道信息"+group)
             WKSDK.shared().channelManager.setChannleInfoForCache(
               Convert.groupToChannelInfo(group)
             );

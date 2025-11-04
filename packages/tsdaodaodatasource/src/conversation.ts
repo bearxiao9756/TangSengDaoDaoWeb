@@ -3,8 +3,9 @@ import axios from "axios";
 import { Conversation, Message, Channel, MessageExtra } from "wukongimjssdk";
 
 export class ConversationProvider implements IConversationProvider {
-
-
+    editMessage(messageID: String, messageSeq: number, channelID: String, channelType: number, content: String): Promise<void> {
+        return WKApp.apiClient.post(`message/edit?channel_id=${channelID}&channel_type=${channelType}&message_id=${messageID}&content_edit=${content}`)
+    }
     async deleteConversation(channel: Channel): Promise<void> {
         return axios.delete(`conversations/${channel.channelID}/${channel.channelType}`)
     }

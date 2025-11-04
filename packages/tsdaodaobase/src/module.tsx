@@ -397,6 +397,12 @@ export default class BaseModule implements IModule {
           WKApp.loginInfo.sex = channelInfo.orgData.sex;
           WKApp.loginInfo.save();
         }
+        console.log("频道信息 ID"+channelInfo.channel.channelID)
+        console.log("频道信息 标题"+channelInfo.title)
+        console.log("频道信息 类型"+channelInfo.channel.channelType)
+        console.log("频道信息 在线状态"+channelInfo.online)
+        console.log("频道信息"+channelInfo.online)
+        console.log("频道信息 orgData"+channelInfo.orgData)
       }
     });
 

@@ -131,6 +131,8 @@ export class Convert {
    
 
     static userToChannelInfo(data: any): ChannelInfo {
+        console.log("用户频道信息")
+        console.log(data)
         let channelInfo = new ChannelInfo()
         channelInfo.channel = new Channel(data.uid, ChannelTypePerson);
         channelInfo.title = data.name;
@@ -162,6 +164,8 @@ export class Convert {
     }
 
     static groupToChannelInfo(data: any): ChannelInfo {
+         console.log("群组频道信息")
+         console.log(data)
         let channelInfo = new ChannelInfo()
         channelInfo.channel = new Channel(data.group_no, ChannelTypeGroup);
         channelInfo.title = data.name;
