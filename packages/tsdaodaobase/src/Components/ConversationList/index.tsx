@@ -158,38 +158,36 @@ export default class ConversationList extends Component<
     }
     return false;
   }
-  async _getChannelDisplayName(channel: Channel, channelInfo?: ChannelInfo): Promise<string> {
+
+  _getChannelDisplayName(
+    channel: Channel,
+    channelInfo?: ChannelInfo
+  ): string {
     if (!channelInfo) {
-      // // 如果 channelInfo 不存在，则触发异步加载
-      WKSDK.shared().channelManager.fetchChannelInfo(channel);
-      const res = await WKApp.apiClient.get(`users/${channel.channelID}`, {
-           param: {},
-         });
-         console.log("刷新频道信息")
-         channelInfo = Convert.userToChannelInfo(res);
-        //  if (!this.vercode || this.vercode == "") {
-        //    if (res.vercode && res.vercode !== "") {
-        //      this.vercode = res.vercode
-        //    }
-        //  }
-        console.log("displayName="+channelInfo?.orgData.displayName)
-        console.log("name="+channelInfo?.orgData.name)
-       console.log("name="+channelInfo?.orgData.name)
-       console.log("channelID="+channelInfo?.orgData.channelID)
-      console.log("fromUID="+channelInfo?.orgData.fromUID)
-       console.log("title="+channelInfo?.orgData.title)
+      WKApp.apiClient
+        .get(`users/${channel.channelID}`, {
+          param: {},
+        })
+        .then((res: any) => {
+          // 注意：这里需要处理 Promise
+          // 异步获取成功后，将信息更新到 SDK
+          const newChannelInfo = Convert.userToChannelInfo(res);
+          if (newChannelInfo) {
+            WKSDK.shared().channelManager.setChannleInfoForCache(newChannelInfo);
+          }
+          console.log("刷新频道信息完成");
+        })
+        .catch((error) => {
+          console.error("获取频道信息失败", error);
+        });
+
       // 返回一个加载中的占位文本，等待 channelListener 触发 setState() 更新
-      return "加载中...";
+      return "加载中..."; // 🎯 同步返回占位符
     }
-    console.log("displayName="+channelInfo?.orgData.displayName)
-    console.log("name="+channelInfo?.orgData.name)
-    console.log("name="+channelInfo?.orgData.name)
-    console.log("channelID="+channelInfo?.orgData.channelID)
-    console.log("fromUID="+channelInfo?.orgData.fromUID)
-    console.log("title="+channelInfo?.orgData.title)
-    // 优先使用 orgData.displayName，其次是 title，最后是 channelID
     return (
-      channelInfo?.orgData.displayName || channelInfo?.title || channel?.channelID
+      channelInfo?.orgData.displayName ||
+      channelInfo?.title ||
+      channel?.channelID
     );
   }
   conversationItem(conversationWrap: ConversationWrap) {
@@ -256,7 +254,17 @@ export default class ConversationList extends Component<
           <div className="wk-conversationlist-item-right">
             <div className="wk-conversationlist-item-right-first-line">
               <div className="wk-conversationlist-item-name">
-                <h3>{displayName}</h3>
+                <h3>
+                  { displayName === "加载中..." ? (
+                    <BeatLoader
+                      size={8}
+                      margin={2}
+                      color={selected ? "white" : "var(--wk-color-theme)"}
+                    />
+                  ) : (
+                    displayName
+                  )}
+                </h3>
                 {channelInfo?.orgData.identityIcon ? (
                   <img
                     style={{
@@ -376,11 +384,11 @@ export default class ConversationList extends Component<
     // console.log(channelInfo.orgData.displayName);
     // console.log(channelInfo.channel.channelID);
     // console.log(channelInfo.channel.channelType);
-    if(channel.channelType == 1){
-      WKApp.shared.baseContext.showUserInfo(channel.channelID)
-    }else{
-      Toast.error("不支持群组修改备注")
-      WKApp.shared.baseContext.showUserInfo(channel.channelID)
+    if (channel.channelType == 1) {
+      WKApp.shared.baseContext.showUserInfo(channel.channelID);
+    } else {
+      Toast.error("不支持群组修改备注");
+      WKApp.shared.baseContext.showUserInfo(channel.channelID);
     }
   }
   onMute(channelInfo: ChannelInfo) {
@@ -453,11 +461,11 @@ export default class ConversationList extends Component<
                 this.onClearMessages(selectConversationWrap?.channel!);
               },
             },
-             {
+            {
               title: "修改备注",
               onClick: () => {
                 console.log("点击了置顶操作");
-                
+
                 this.onremark(selectConversationWrap?.channel!);
               },
             },
