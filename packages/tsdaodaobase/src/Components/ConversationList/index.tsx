@@ -18,6 +18,7 @@ import { RevokeCell } from "../../Messages/Revoke";
 import { FlameMessageCell } from "../../Messages/Flame";
 import WKAvatar from "../WKAvatar";
 import { Contacts } from "../../Service/DataSource/DataSource";
+import { Convert } from "../../Service/Convert";
 export interface ConversationListProps {
   conversations: ConversationWrap[];
   select?: Channel;
@@ -157,10 +158,26 @@ export default class ConversationList extends Component<
     }
     return false;
   }
-  _getChannelDisplayName(channel: Channel, channelInfo?: ChannelInfo): string {
+  async _getChannelDisplayName(channel: Channel, channelInfo?: ChannelInfo): Promise<string> {
     if (!channelInfo) {
       // // 如果 channelInfo 不存在，则触发异步加载
       WKSDK.shared().channelManager.fetchChannelInfo(channel);
+      const res = await WKApp.apiClient.get(`users/${channel.channelID}`, {
+           param: {},
+         });
+         console.log("刷新频道信息")
+         channelInfo = Convert.userToChannelInfo(res);
+        //  if (!this.vercode || this.vercode == "") {
+        //    if (res.vercode && res.vercode !== "") {
+        //      this.vercode = res.vercode
+        //    }
+        //  }
+        console.log("displayName="+channelInfo?.orgData.displayName)
+        console.log("name="+channelInfo?.orgData.name)
+       console.log("name="+channelInfo?.orgData.name)
+       console.log("channelID="+channelInfo?.orgData.channelID)
+      console.log("fromUID="+channelInfo?.orgData.fromUID)
+       console.log("title="+channelInfo?.orgData.title)
       // 返回一个加载中的占位文本，等待 channelListener 触发 setState() 更新
       return "加载中...";
     }
