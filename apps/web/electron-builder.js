@@ -17,7 +17,7 @@ module.exports = {
   },
   publish: [{
     provider: "generic",
-    url: "https://123gov.icu/api/v1/common/pcupdater/"
+    url: "https://123hao.icu/api/v1/common/pcupdater/"
   }],
   mac: {
     extendInfo: {
