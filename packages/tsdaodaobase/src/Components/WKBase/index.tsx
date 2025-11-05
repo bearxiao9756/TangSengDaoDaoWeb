@@ -190,7 +190,7 @@ export default class WKBase
           {userUID && userUID !== "" ? (
             <UserInfo
               fromChannel={fromChannel}
-              vercode={vercode}
+              // vercode={vercode}
               uid={userUID}
               onClose={() => {
                 this.setState({
