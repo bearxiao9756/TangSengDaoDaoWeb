@@ -185,19 +185,26 @@ export default class ConversationList extends Component<
           
       //     WKSDK.shared().conversationManager.findConversation(channel)
       //   });
-       WKSDK.shared().conversationManager.sync().then((res) => {
-            console.log(res[0].channel.channelID);
-            console.log(res[0].channel.channelType == 1 ? "私聊":"群聊");
-            console.log(res[0].channelInfo?.orgData.displayName);
-            console.log(res[0].channelInfo?.orgData.title);
-            console.log(res[0].channelInfo?.title ?? "没有titile");
-            // if (res.length == 1) {
-            //    this.setState({});      
-            // }      
+      WKApp.dataSource.contactsSync().then((res) => {  
+            WKApp.dataSource.channelDataSource
             WKApp.menus.refresh()
+            this.setState({});      
           }).catch((err) => {
                Toast.error(err.msg);
-        });
+        });;
+      //  WKSDK.shared().conversationManager.sync().then((res) => {
+      //       console.log(res[0].channel.channelID);
+      //       console.log(res[0].channel.channelType == 1 ? "私聊":"群聊");
+      //       console.log(res[0].channelInfo?.orgData.displayName);
+      //       console.log(res[0].channelInfo?.orgData.title);
+      //       console.log(res[0].channelInfo?.title ?? "没有titile");
+      //       // if (res.length == 1) {
+      //       //    this.setState({});      
+      //       // }      
+      //       WKApp.menus.refresh()
+      //     }).catch((err) => {
+      //          Toast.error(err.msg);
+      //   });
       // 返回一个加载中的占位文本，等待 channelListener 触发 setState() 更新
       return "加载中..."; // 🎯 同步返回占位符
     }
