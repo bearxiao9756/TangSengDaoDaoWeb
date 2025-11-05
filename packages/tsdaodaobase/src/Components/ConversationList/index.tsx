@@ -408,11 +408,26 @@ export default class ConversationList extends Component<
     // console.log(channelInfo.orgData.displayName);
     // console.log(channelInfo.channel.channelID);
     // console.log(channelInfo.channel.channelType);
+
+
+
     if (channel.channelType == 1) {
-      WKApp.shared.baseContext.showUserInfo(channel.channelID);
+      // WKApp.shared.baseContext.showUserInfo(channel.channelID);
+      const uid = WKApp.loginInfo.uid;
+      WKApp.apiClient
+        .get(`/users/${uid}`)
+        .then((data) => {
+          const loginInfo = WKApp.loginInfo;
+          console.log(data.short_no)
+          console.log(data.name)
+          console.log(data.sex)
+        })
+        .catch((err) => {
+          console.log(err);
+          Toast.error("获取用户信息失败");
+        });
     } else {
       Toast.error("不支持群组修改备注");
-      WKApp.shared.baseContext.showUserInfo(channel.channelID);
     }
   }
   onMute(channelInfo: ChannelInfo) {

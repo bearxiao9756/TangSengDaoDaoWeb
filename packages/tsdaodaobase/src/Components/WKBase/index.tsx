@@ -78,7 +78,7 @@ export default class WKBase
       showUserInfo: true,
       userUID: uid,
       fromChannel: fromChannel,
-      // vercode: vercode,
+      vercode: vercode,
     });
   }
 
