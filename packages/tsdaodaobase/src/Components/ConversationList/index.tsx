@@ -191,9 +191,10 @@ export default class ConversationList extends Component<
             console.log(res[0].channelInfo?.orgData.displayName);
             console.log(res[0].channelInfo?.orgData.title);
             console.log(res[0].channelInfo?.title ?? "没有titile");
-            if (res.length == 1) {
-               this.setState({});      
-            }      
+            // if (res.length == 1) {
+            //    this.setState({});      
+            // }      
+            WKApp.menus.refresh()
           }).catch((err) => {
                Toast.error(err.msg);
         });
