@@ -412,20 +412,20 @@ export default class ConversationList extends Component<
 
 
     if (channel.channelType == 1) {
-      // WKApp.shared.baseContext.showUserInfo(channel.channelID);
-      const uid = channel.channelID;
-      WKApp.apiClient
-        .get(`/users/${uid}`)
-        .then((data) => {
-          const loginInfo = WKApp.loginInfo;
-          console.log(data.short_no)
-          console.log(data.name)
-          console.log(data.sex)
-        })
-        .catch((err) => {
-          console.log(err);
-          Toast.error("获取用户信息失败");
-        });
+      WKApp.shared.baseContext.showUserInfo(channel.channelID);
+    //   const uid = channel.channelID;
+    //   WKApp.apiClient
+    //     .get(`/users/${uid}`)
+    //     .then((data) => {
+    //       const loginInfo = WKApp.loginInfo;
+    //       console.log(data.short_no)
+    //       console.log(data.name)
+    //       console.log(data.sex)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //       Toast.error("获取用户信息失败");
+    //     });
     } else {
       Toast.error("不支持群组修改备注");
     }
@@ -503,7 +503,7 @@ export default class ConversationList extends Component<
             {
               title: "修改备注",
               onClick: () => {
-                console.log("点击了置顶操作");
+                console.log("点击了备注操作");
 
                 this.onremark(selectConversationWrap?.channel!);
               },
