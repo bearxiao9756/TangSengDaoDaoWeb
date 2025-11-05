@@ -1,4 +1,4 @@
-import WKSDK from "wukongimjssdk";
+import WKSDK, { Conversation } from "wukongimjssdk";
 import { ChannelInfoListener } from "wukongimjssdk";
 import { Channel, ChannelInfo, ChannelTypePerson } from "wukongimjssdk";
 import React, { Component } from "react";
@@ -19,6 +19,7 @@ import { FlameMessageCell } from "../../Messages/Flame";
 import WKAvatar from "../WKAvatar";
 import { Contacts } from "../../Service/DataSource/DataSource";
 import { Convert } from "../../Service/Convert";
+import ConversationVM from "../Conversation/vm";
 export interface ConversationListProps {
   conversations: ConversationWrap[];
   select?: Channel;
@@ -141,7 +142,9 @@ export default class ConversationList extends Component<
     }
     return `${(btwTime / 60).toFixed(0)}分钟`;
   }
-
+  refreshList() { // 👈 添加一个公共方法
+    this.setState({});
+  }
   // 是否需要显示在线状态
   needShowOnlineStatus(channelInfo?: ChannelInfo) {
     if (!channelInfo) {
@@ -179,7 +182,16 @@ export default class ConversationList extends Component<
         })
         .catch((error) => {
           console.error("获取频道信息失败", error);
-          WKSDK.shared().conversationManager.sync()
+          WKSDK.shared().conversationManager.sync().then((res) => {
+            Toast.error(res[0].channel.channelID);
+            Toast.error(res[0].channel.channelType == 1 ? "私聊":"群聊");
+            Toast.error(res[0].channelInfo?.orgData.displayName);
+            Toast.error(res[0].channelInfo?.orgData.title);
+            Toast.error(res[0].channelInfo?.title ?? "没有titile");
+               this.setState({});               
+          }).catch((err) => {
+               Toast.error(err.msg);
+          });
           WKSDK.shared().conversationManager.findConversation(channel)
         });
 
