@@ -413,7 +413,7 @@ export default class ConversationList extends Component<
 
     if (channel.channelType == 1) {
       // WKApp.shared.baseContext.showUserInfo(channel.channelID);
-      const uid = WKApp.loginInfo.uid;
+      const uid = channel.channelID;
       WKApp.apiClient
         .get(`/users/${uid}`)
         .then((data) => {
