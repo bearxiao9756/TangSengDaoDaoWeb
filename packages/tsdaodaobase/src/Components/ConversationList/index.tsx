@@ -167,34 +167,36 @@ export default class ConversationList extends Component<
     channelInfo?: ChannelInfo
   ): string {
     if (!channelInfo) {
-      WKApp.apiClient
-        .get(`users/${channel.channelID}`, {
-          param: {},
-        })
-        .then((res: any) => {
-          // 注意：这里需要处理 Promise
-          // 异步获取成功后，将信息更新到 SDK
-          const newChannelInfo = Convert.userToChannelInfo(res);
-          if (newChannelInfo) {
-            WKSDK.shared().channelManager.setChannleInfoForCache(newChannelInfo);
-          }
-          console.log("刷新频道信息完成");
-        })
-        .catch((error) => {
-          console.error("获取频道信息失败", error);
-          WKSDK.shared().conversationManager.sync().then((res) => {
-            Toast.error(res[0].channel.channelID);
-            Toast.error(res[0].channel.channelType == 1 ? "私聊":"群聊");
-            Toast.error(res[0].channelInfo?.orgData.displayName);
-            Toast.error(res[0].channelInfo?.orgData.title);
-            Toast.error(res[0].channelInfo?.title ?? "没有titile");
-               this.setState({});               
+      // WKApp.apiClient
+      //   .get(`users/${channel.channelID}`, {
+      //     param: {},
+      //   })
+      //   .then((res: any) => {
+      //     // 注意：这里需要处理 Promise
+      //     // 异步获取成功后，将信息更新到 SDK
+      //     const newChannelInfo = Convert.userToChannelInfo(res);
+      //     if (newChannelInfo) {
+      //       WKSDK.shared().channelManager.setChannleInfoForCache(newChannelInfo);
+      //     }
+      //     console.log("刷新频道信息完成");
+      //   })
+      //   .catch((error) => {
+      //     console.error("获取频道信息失败", error);
+          
+      //     WKSDK.shared().conversationManager.findConversation(channel)
+      //   });
+       WKSDK.shared().conversationManager.sync().then((res) => {
+            console.log(res[0].channel.channelID);
+            console.log(res[0].channel.channelType == 1 ? "私聊":"群聊");
+            console.log(res[0].channelInfo?.orgData.displayName);
+            console.log(res[0].channelInfo?.orgData.title);
+            console.log(res[0].channelInfo?.title ?? "没有titile");
+            if (res.length == 1) {
+               this.setState({});      
+            }      
           }).catch((err) => {
                Toast.error(err.msg);
-          });
-          WKSDK.shared().conversationManager.findConversation(channel)
         });
-
       // 返回一个加载中的占位文本，等待 channelListener 触发 setState() 更新
       return "加载中..."; // 🎯 同步返回占位符
     }
