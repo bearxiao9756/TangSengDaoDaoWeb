@@ -179,6 +179,8 @@ export default class ConversationList extends Component<
         })
         .catch((error) => {
           console.error("获取频道信息失败", error);
+          WKSDK.shared().conversationManager.sync()
+          WKSDK.shared().conversationManager.findConversation(channel)
         });
 
       // 返回一个加载中的占位文本，等待 channelListener 触发 setState() 更新
