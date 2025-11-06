@@ -78,13 +78,13 @@ export class MediaMessageUploadTask extends MessageTask {
        if(result) {
             var uploadurl = result.url;
             if(uploadurl.includes('http://43.133.38.23:8090')){
-                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://dabobo.acone.icu/api')
+                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://123back.icu/api')
             }
-            if(uploadurl.includes('http://dabobo.acone.icu:8090/')){
-                uploadurl = uploadurl.replace('http://dabobo.acone.icu:8090', 'https://dabobo.acone.icu/api')
+            if(uploadurl.includes('http://123back.icu:8090/')){
+                uploadurl = uploadurl.replace('http://123back.icu:8090', 'https://123back.icu/api')
             }
-            if(uploadurl.includes('https://dabobo.acone.icu:8090/')){
-                uploadurl = uploadurl.replace('https://dabobo.acone.icu:8090', 'https://dabobo.acone.icu/api')
+            if(uploadurl.includes('https://123back.icu:8090/')){
+                uploadurl = uploadurl.replace('https://123back.icu:8090', 'https://123back.icu/api')
             }
             console.log("上传路径="+uploadurl);
         //    return result.url
