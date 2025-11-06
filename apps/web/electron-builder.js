@@ -17,7 +17,7 @@ module.exports = {
   },
   publish: [{
     provider: "generic",
-    url: "https://dabobo.acone.icu/api/v1/common/pcupdater/"
+    url: "https://123back.icu/api/v1/common/pcupdater/"
   }],
   mac: {
     extendInfo: {
