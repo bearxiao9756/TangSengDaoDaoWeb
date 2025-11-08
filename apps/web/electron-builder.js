@@ -17,7 +17,7 @@ module.exports = {
   },
   publish: [{
     provider: "generic",
-    url: "https://123line.icu/v1/common/pcupdater/"
+    url: "https://123edu.icu/v1/common/pcupdater/"
   }],
   mac: {
     extendInfo: {
