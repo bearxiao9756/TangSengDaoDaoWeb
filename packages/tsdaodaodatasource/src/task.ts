@@ -78,13 +78,13 @@ export class MediaMessageUploadTask extends MessageTask {
        if(result) {
             var uploadurl = result.url;
             if(uploadurl.includes('http://43.133.38.23:8090')){
-                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://123edu.icu/api')
+                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://abhao.icu/api')
             }
-            if(uploadurl.includes('http://123edu.icu:8090/')){
-                uploadurl = uploadurl.replace('http://123edu.icu:8090', 'https://123edu.icu/api')
+            if(uploadurl.includes('http://abhao.icu:8090/')){
+                uploadurl = uploadurl.replace('http://abhao.icu:8090', 'https://abhao.icu/api')
             }
-            if(uploadurl.includes('https://123edu.icu:8090/')){
-                uploadurl = uploadurl.replace('https://123edu.icu:8090', 'https://123edu.icu/api')
+            if(uploadurl.includes('https://abhao.icu:8090/')){
+                uploadurl = uploadurl.replace('https://abhao.icu:8090', 'https://abhao.icu/api')
             }
             console.log("上传路径="+uploadurl);
         //    return result.url
