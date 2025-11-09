@@ -125,7 +125,7 @@ class Login extends Component<any, LoginState> {
 
                     {/* <div className="wk-login-footer">
                         <ul>
-                            <li>注册坤元服务</li>
+                            <li>注册广元服务</li>
                             <li>忘记密码</li>
                             <li>隐私政策</li>
                             <li>用户协议</li>
