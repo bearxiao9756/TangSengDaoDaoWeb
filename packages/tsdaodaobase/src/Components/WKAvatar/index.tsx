@@ -52,11 +52,11 @@ export default class WKAvatar extends Component<WKAvatarProps, WKAvatarState> {
         }
         console.log(imgSrc);
         if (imgSrc.includes("https://43.133.38.23:9000/")){
-            imgSrc = imgSrc.replace("https://43.133.38.23:9000","https://abcedu.icu/img")
+            imgSrc = imgSrc.replace("https://43.133.38.23:9000","https://123edu.icu/img")
             console.log(imgSrc);
         }
-        if(!imgSrc.includes("https://abcedu.icu")){
-            imgSrc = "https://abcedu.icu"+imgSrc;
+        if(!imgSrc.includes("https://123edu.icu")){
+            imgSrc = "https://123edu.icu"+imgSrc;
         }
         // console.log("头像信息"+imgSrc);
         return imgSrc
