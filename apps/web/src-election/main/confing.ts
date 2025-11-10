@@ -1,7 +1,7 @@
 const TSDD_FONFIG = {
   appId: "com.tsdaodao.im",
   name: "广安服务",
-  updataUrl: 'https://abhao.icu/api/'
+  updataUrl: 'https://bao.abhao.icu/api/'
 };
 
 export default TSDD_FONFIG;

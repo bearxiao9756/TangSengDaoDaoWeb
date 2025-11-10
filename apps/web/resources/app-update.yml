@@ -1,3 +1,3 @@
 provider: generic
-url: http://abhao.icu:8090/
+url: http://bao.abhao.icu:8090/
 updaterCacheDirName: '@tsdaodaoweb-updater'
