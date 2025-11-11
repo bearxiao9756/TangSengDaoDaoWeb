@@ -9,9 +9,9 @@ import  { DataSourceModule } from '@tsdaodao/datasource';
 import {ContactsModule} from '@tsdaodao/contacts';
 
 // const apiURL = "https://api.botgate.cn/v1/"
-// const apiURL = "http://bao.aehao.icu:8090/v1/"
+// const apiURL = "http://hao.aehao.icu:8090/v1/"
 // const apiURL = "http://43.134.241.145:8090/v1"
-const apiURL = "https://bao.aehao.icu/api/v1"
+const apiURL = "https://hao.aehao.icu/api/v1"
 // 43.133.38.23
 if((window as any).__TAURI_IPC__) { // tauri环境
   console.log("tauri环境")
