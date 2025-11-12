@@ -76,11 +76,11 @@ export class MediaMessageUploadTask extends MessageTask {
        const result = await WKApp.apiClient.get(`file/upload?path=${path}&type=chat`)
        if(result) {
           var uploadurl = result.url
-          if(uploadurl.includes('http://a.imhao.icu:8090/')){
-            uploadurl = uploadurl.replace('http://a.imhao.icu:8090', 'https://a.imhao.icu/api')
+          if(uploadurl.includes('http://b.imhao.icu:8090/')){
+            uploadurl = uploadurl.replace('http://b.imhao.icu:8090', 'https://b.imhao.icu/api')
           }
-          if(uploadurl.includes('https://a.imhao.icu:8090/')){
-            uploadurl = uploadurl.replace('https://a.imhao.icu:8090', 'https://a.imhao.icu/api')
+          if(uploadurl.includes('https://b.imhao.icu:8090/')){
+            uploadurl = uploadurl.replace('https://b.imhao.icu:8090', 'https://b.imhao.icu/api')
           }
         //    return result.url
         console.log("上传路径="+uploadurl);
