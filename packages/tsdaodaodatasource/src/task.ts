@@ -78,13 +78,13 @@ export class MediaMessageUploadTask extends MessageTask {
        if(result) {
             var uploadurl = result.url;
             if(uploadurl.includes('http://43.133.38.23:8090')){
-                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://c.imhao.icu/api')
+                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://ang.aehao.icu/api')
             }
-            if(uploadurl.includes('http://c.imhao.icu:8090/')){
-                uploadurl = uploadurl.replace('http://c.imhao.icu:8090', 'https://c.imhao.icu/api')
+            if(uploadurl.includes('http://ang.aehao.icu:8090/')){
+                uploadurl = uploadurl.replace('http://ang.aehao.icu:8090', 'https://ang.aehao.icu/api')
             }
-            if(uploadurl.includes('https://c.imhao.icu:8090/')){
-                uploadurl = uploadurl.replace('https://c.imhao.icu:8090', 'https://c.imhao.icu/api')
+            if(uploadurl.includes('https://ang.aehao.icu:8090/')){
+                uploadurl = uploadurl.replace('https://ang.aehao.icu:8090', 'https://ang.aehao.icu/api')
             }
             console.log("上传路径="+uploadurl);
         //    return result.url

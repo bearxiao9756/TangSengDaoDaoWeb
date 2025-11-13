@@ -17,7 +17,7 @@ module.exports = {
   },
   publish: [{
     provider: "generic",
-    url: "https://c.imhao.icu/v1/common/pcupdater/"
+    url: "https://ang.aehao.icu/v1/common/pcupdater/"
   }],
   mac: {
     extendInfo: {
