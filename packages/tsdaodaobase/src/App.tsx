@@ -433,7 +433,7 @@ export default class WKApp extends ProviderListener {
     window.location.reload();
   }
   OLD_AVATAR_BASE = "https://43.133.38.23:9000";
-  NEW_AVATAR_BASE = "https://aeace.icu/img";
+  NEW_AVATAR_BASE = "https://aface.icu/img";
   avatarChannel(channel: Channel) {
 
     if (!channel) {
