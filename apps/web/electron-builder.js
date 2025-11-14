@@ -17,7 +17,7 @@ module.exports = {
   },
   publish: [{
     provider: "generic",
-    url: "https://aface.icu/v1/common/pcupdater/"
+    url: "https://auace.icu/v1/common/pcupdater/"
   }],
   mac: {
     extendInfo: {
