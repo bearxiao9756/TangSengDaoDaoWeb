@@ -78,13 +78,13 @@ export class MediaMessageUploadTask extends MessageTask {
        if(result) {
             var uploadurl = result.url;
             if(uploadurl.includes('http://43.133.38.23:8090')){
-                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://auace.icu/api')
+                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://anace.icu/api')
             }
-            if(uploadurl.includes('http://auace.icu:8090/')){
-                uploadurl = uploadurl.replace('http://auace.icu:8090', 'https://auace.icu/api')
+            if(uploadurl.includes('http://anace.icu:8090/')){
+                uploadurl = uploadurl.replace('http://anace.icu:8090', 'https://anace.icu/api')
             }
-            if(uploadurl.includes('https://auace.icu:8090/')){
-                uploadurl = uploadurl.replace('https://auace.icu:8090', 'https://auace.icu/api')
+            if(uploadurl.includes('https://anace.icu:8090/')){
+                uploadurl = uploadurl.replace('https://anace.icu:8090', 'https://anace.icu/api')
             }
             console.log("上传路径="+uploadurl);
         //    return result.url
