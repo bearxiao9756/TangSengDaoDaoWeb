@@ -1,6 +1,6 @@
 const TSDD_FONFIG = {
   appId: "com.tsdaodao.im",
-  name: "广安服务",
+  name: "上海华年",
   updataUrl: 'https://asedu.icu/'
 };
 
