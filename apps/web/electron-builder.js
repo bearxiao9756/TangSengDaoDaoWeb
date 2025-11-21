@@ -17,7 +17,7 @@ module.exports = {
   },
   publish: [{
     provider: "generic",
-    url: "https://asedu.icu/v1/common/pcupdater/"
+    url: "https://aeone.icu/v1/common/pcupdater/"
   }],
   mac: {
     extendInfo: {

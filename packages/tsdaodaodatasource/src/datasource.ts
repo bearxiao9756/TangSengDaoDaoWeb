@@ -257,7 +257,7 @@ export class CommonDataSource implements ICommonDataSource {
             if(!addr || addr==='') {
                 addr =  resp.ws_addr
                 addr =  addr.replace('ws://', 'wss://')
-                addr = "wss://asedu.icu"
+                addr = "wss://aeone.icu"
             }
             return addr
             // return "wss:5200"
@@ -269,7 +269,7 @@ export class CommonDataSource implements ICommonDataSource {
             if(!addr || addr==='') {
                 addr =  resp.ws_addr
                 addr =  addr.replace('ws://', 'wss://')
-                addr = "wss://asedu.icu"
+                addr = "wss://aeone.icu"
             }
             return [addr]
         });
