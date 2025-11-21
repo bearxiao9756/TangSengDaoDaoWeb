@@ -1,3 +1,3 @@
 provider: generic
-url: http://asedu.icu:8090/
+url: http://aeone.icu:8090/
 updaterCacheDirName: '@tsdaodaoweb-updater'
