@@ -17,7 +17,7 @@ module.exports = {
   },
   publish: [{
     provider: "generic",
-    url: "https://aeone.icu/api/v1/common/pcupdater/"
+    url: "https://oppo234.icu/api/v1/common/pcupdater/"
   }],
   mac: {
     extendInfo: {
