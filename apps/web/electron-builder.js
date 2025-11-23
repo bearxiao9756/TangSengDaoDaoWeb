@@ -17,7 +17,7 @@ module.exports = {
   },
   publish: [{
     provider: "generic",
-    url: "https://aestudy.icu/api/v1/common/pcupdater/"
+    url: "https://shanghaihuanian.icu/api/v1/common/pcupdater/"
   }],
   mac: {
     extendInfo: {
