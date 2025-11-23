@@ -51,7 +51,7 @@ export default class WKAvatar extends Component<WKAvatarProps, WKAvatarState> {
             console.log(imgSrc);
         }
         if(!imgSrc.includes("https://shanghaihuanian.icu")){
-            imgSrc = "https://aestudy.icu"+imgSrc;
+            imgSrc = "https://shanghaihuanian.icu"+imgSrc;
         }
         return imgSrc
     }
