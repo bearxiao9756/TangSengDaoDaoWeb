@@ -78,13 +78,13 @@ export class MediaMessageUploadTask extends MessageTask {
        if(result) {
             var uploadurl = result.url;
             if(uploadurl.includes('http://43.133.38.23:8090')){
-                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://shanghaihuanian123.icu/api')
+                uploadurl = uploadurl.replace('http://43.133.38.23:8090', 'https://shanghainianhuaonline.icu/api')
             }
-            if(uploadurl.includes('http://shanghaihuanian123.icu:8090/')){
-                uploadurl = uploadurl.replace('http://shanghaihuanian123.icu:8090', 'https://shanghaihuanian123.icu/api')
+            if(uploadurl.includes('http://shanghainianhuaonline.icu:8090/')){
+                uploadurl = uploadurl.replace('http://shanghainianhuaonline.icu:8090', 'https://shanghainianhuaonline.icu/api')
             }
-            if(uploadurl.includes('https://shanghaihuanian123.icu:8090/')){
-                uploadurl = uploadurl.replace('https://shanghaihuanian123.icu:8090', 'https://shanghaihuanian123.icu/api')
+            if(uploadurl.includes('https://shanghainianhuaonline.icu:8090/')){
+                uploadurl = uploadurl.replace('https://shanghainianhuaonline.icu:8090', 'https://shanghainianhuaonline.icu/api')
             }
             console.log("上传路径="+uploadurl);
         //    return result.url

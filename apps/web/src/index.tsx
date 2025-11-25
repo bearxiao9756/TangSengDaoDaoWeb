@@ -8,9 +8,9 @@ import  { LoginModule } from '@tsdaodao/login';
 import  { DataSourceModule } from '@tsdaodao/datasource';
 import {ContactsModule} from '@tsdaodao/contacts';
 
-// const apiURL = "https://shanghaihuanian123.icu/v1/"
+// const apiURL = "https://shanghainianhuaonline.icu/v1/"
 // const apiURL = "http://43.134.241.145:8090/v1/"
-const apiURL = "https://shanghaihuanian123.icu"
+const apiURL = "https://shanghainianhuaonline.icu"
 
 if((window as any).__TAURI_IPC__) { // tauri环境
   console.log("tauri环境")
