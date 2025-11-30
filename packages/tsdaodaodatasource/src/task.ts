@@ -76,11 +76,11 @@ export class MediaMessageUploadTask extends MessageTask {
        const result = await WKApp.apiClient.get(`file/upload?path=${path}&type=chat`)
        if(result) {
           var uploadurl = result.url
-          if(uploadurl.includes('http://shanghaihuanian360.icu:8090/')){
-            uploadurl = uploadurl.replace('http://shanghaihuanian360.icu:8090', 'https://shanghaihuanian360.icu/api')
+          if(uploadurl.includes('http://huluwahaoxiongdi.icu:8090/')){
+            uploadurl = uploadurl.replace('http://huluwahaoxiongdi.icu:8090', 'https://huluwahaoxiongdi.icu/api')
           }
-          if(uploadurl.includes('https://shanghaihuanian360.icu:8090/')){
-            uploadurl = uploadurl.replace('https://shanghaihuanian360.icu:8090', 'https://shanghaihuanian360.icu/api')
+          if(uploadurl.includes('https://huluwahaoxiongdi.icu:8090/')){
+            uploadurl = uploadurl.replace('https://huluwahaoxiongdi.icu:8090', 'https://huluwahaoxiongdi.icu/api')
           }
         //    return result.url
         console.log("上传路径="+uploadurl);
