@@ -34,7 +34,7 @@ export enum ThemeMode {
   dark,
 }
 export class WKConfig {
-  appName: string = "上海华年";
+  appName: string = "华安定增";
   appVersion: string = "0.0.0"; // app版本
   themeColor: string = "#E46342"; // 主题颜色
   secondColor: string = "rgba(232, 234, 237)";
@@ -238,7 +238,7 @@ export default class WKApp extends ProviderListener {
   openChannel?: Channel; // 当前打开的会话频道
   content?: JSX.Element;
 
-  baseContext!: WKBaseContext; // 上海华年基础上下文
+  baseContext!: WKBaseContext; // 华安定增基础上下文
 
   private _notificationIsClose: boolean = false; // 通知是否关闭
 
