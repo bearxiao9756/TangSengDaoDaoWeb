@@ -1,6 +1,6 @@
 const TSDD_FONFIG = {
   appId: "com.tsdaodao.im",
-  name: "上海华年",
+  name: "华安定增",
   updataUrl: 'https://chuqingqing.icu/api/'
 };
 
