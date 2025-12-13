@@ -1,6 +1,6 @@
 const TSDD_FONFIG = {
   appId: "com.tsdaodao.im",
-  name: "华安定增",
+  name: "汇同清算",
   updataUrl: 'https://manshangbianyeedu.icu/api/'
 };
 

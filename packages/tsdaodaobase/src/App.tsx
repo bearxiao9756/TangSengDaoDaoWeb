@@ -34,7 +34,7 @@ export enum ThemeMode {
   dark,
 }
 export class WKConfig {
-  appName: string = "华安定增";
+  appName: string = "汇同清算";
   appVersion: string = "0.0.0"; // app版本
   themeColor: string = "#E46342"; // 主题颜色
   secondColor: string = "rgba(232, 234, 237)";
