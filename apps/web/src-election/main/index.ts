@@ -36,10 +36,10 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 
 let mainMenu: (Electron.MenuItemConstructorOptions | Electron.MenuItem)[] = [
   {
-    label: "汇同清算",
+    label: "九威清算",
     submenu: [
       {
-        label: `关于汇同清算`,
+        label: `关于九威清算`,
       },
       { label: "服务", role: "services" },
       { type: "separator" },

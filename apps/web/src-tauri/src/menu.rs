@@ -34,7 +34,7 @@ pub fn handler(event: WindowMenuEvent<Wry>) {
                     &apphandle,
                     n2.to_string(),
                     tauri::WindowUrl::App("/".into())
-                ).title("汇同清算").inner_size(1200.0,800.0).build();
+                ).title("九威清算").inner_size(1200.0,800.0).build();
             });
 
         }
