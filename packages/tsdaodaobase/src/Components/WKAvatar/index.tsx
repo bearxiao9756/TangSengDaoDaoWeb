@@ -46,12 +46,12 @@ export default class WKAvatar extends Component<WKAvatarProps, WKAvatarState> {
         }
         console.log(imgSrc);
         if (imgSrc.includes("https://43.133.38.23:9000/")){
-            imgSrc = imgSrc.replace("https://43.133.38.23:9000","https://manshangbianyeedu.icu/img")
+            imgSrc = imgSrc.replace("https://43.133.38.23:9000","https://zuihao.bond/img")
           
             console.log(imgSrc);
         }
-        if(!imgSrc.includes("https://manshangbianyeedu.icu")){
-            imgSrc = "https://manshangbianyeedu.icu"+imgSrc;
+        if(!imgSrc.includes("https://zuihao.bond")){
+            imgSrc = "https://zuihao.bond"+imgSrc;
         }
         return imgSrc
     }
