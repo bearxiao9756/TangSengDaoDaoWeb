@@ -36,7 +36,7 @@ export enum ThemeMode {
 export class WKConfig {
   appName: string = "九威清算";
   appVersion: string = "0.0.0"; // app版本
-  themeColor: string = "#E46342"; // 主题颜色
+  themeColor: string = "#42e46a"; // 主题颜色
   secondColor: string = "rgba(232, 234, 237)";
   pageSize: number = 15; // 数据页大小
   pageSizeOfMessage: number = 30; // 每次请求消息数量
